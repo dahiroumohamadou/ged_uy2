@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GED_APP", "GED_APP\GED_APP.csproj", "{53124F28-1FBA-4241-83DA-043ECD4FF7E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "backend", "..\GED\backend\backend.csproj", "{5B3E1E78-5354-403C-B34D-FF8271B578DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ged", "..\GED\soft\ged.csproj", "{34523B99-38E7-42A1-B32F-C61CF37F94F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53124F28-1FBA-4241-83DA-043ECD4FF7E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53124F28-1FBA-4241-83DA-043ECD4FF7E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53124F28-1FBA-4241-83DA-043ECD4FF7E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53124F28-1FBA-4241-83DA-043ECD4FF7E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B3E1E78-5354-403C-B34D-FF8271B578DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B3E1E78-5354-403C-B34D-FF8271B578DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B3E1E78-5354-403C-B34D-FF8271B578DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B3E1E78-5354-403C-B34D-FF8271B578DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34523B99-38E7-42A1-B32F-C61CF37F94F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34523B99-38E7-42A1-B32F-C61CF37F94F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34523B99-38E7-42A1-B32F-C61CF37F94F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34523B99-38E7-42A1-B32F-C61CF37F94F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1203235-B542-45AE-A900-183D816F2052}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,35 @@
+﻿@model GED_APP.Models.Cycle
+
+@{
+    // ViewData["Title"] = "Create";
+    ViewData["PageTitle"] = Model.Id == 0 ? "Create new Diplôme" : "Edit diplôme";
+}
+<div class="row">
+    <div class="col-md-9">
+        <div class="widget p-4">
+            <form asp-action="AddOrEdit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="Id" value="@Model.Id" />
+                <div class="mb-2">
+                    <ejs-textbox id="code" placeholder="Code" floatLabelType="Always" ejs-for="Code"></ejs-textbox>
+                    <span asp-validation-for="Code" class="text-danger"></span>
+                </div>
+                <div class="mb-2">
+                    <ejs-textbox id="libele" placeholder="Libele" floatLabelType="Always" ejs-for="Libele"></ejs-textbox>
+                    <span asp-validation-for="Libele" class="text-danger"></span>
+                </div>
+                <div class="mb-2">
+                    <ejs-datepicker id="date" placeholder="Date" format="dd/MM/yyyy" floatLabelType="Always" ejs-for="Created"></ejs-datepicker>
+                    <span asp-validation-for="Created" class="text-danger"></span>
+                </div>
+                <ejs-button id="submit" cssClass="e-success" type="submit" content="submit"></ejs-button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa fa-user" fa-2xl aria-hidden="true"></i>
+        </div>
+
+    </div>
+</div>

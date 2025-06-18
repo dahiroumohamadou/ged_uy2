@@ -1,0 +1,120 @@
+﻿@* @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor; *@
+@model IEnumerable<GED_APP.Models.Doc>
+@{
+    // ViewData["Title"] = "List of personnel";
+    ViewData["PageTitle"] = "Pvs";
+    ViewData["PageActionText"] = "+ New Pv";
+    ViewData["PageActionUrl"] = "/Pv/AddOrEdit";
+}
+
+
+@* <p class="text-purple-700 text-opacity-100 ...">The quick brown fox ...</p>
+<p class="text-purple-700 text-opacity-75 ...">The quick brown fox ...</p>
+<p class="text-purple-700 text-opacity-50 ...">The quick brown fox ...</p>
+<p class="text-purple-700 text-opacity-25 ...">The quick brown fox ...</p>
+<p class="text-purple-700 text-opacity-0 ...">The quick brown fox ...</p> *@
+@if (@TempData["AlertMessage"] != null)
+{
+   
+    <script src="/lib/jquery//dist/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+        @*  swal("Infos : ", '@TempData["AlertMessage"]', "success");*@
+            swal("Infos : ", '@TempData["AlertMessage"]', "info"); 
+           @*  swal("Infos : ", '@TempData["AlertMessage"]', "warning"); *@
+        };
+    </script>
+    @* <div class="alert alert-success">
+        @TempData["AlertMessage"]
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+    </div> *@
+}
+<div class="row ">
+     
+    <div class="col-md-11 h-100 d-flex align-content-center justify-content-center">
+        <ejs-grid id="Grid"
+                  dataSource="@ViewBag.DataSource"
+                  gridLines="None"
+                  allowSorting="true"
+                  allowPaging="true"
+                  toolbar="@(new List<string>() {"Search" })"
+                  gridlines="None">
+            <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
+            <e-grid-columns>
+                <e-grid-column field="rowIndex" headerText="N°" template="#rowIndexTemplate" textAlign="Center"></e-grid-column>
+                <e-grid-column field="CodePvAnnee" headerText="Code" textAlign="Center"></e-grid-column>
+                <e-grid-column template="#SourceColumTemplate" headerText="Source" textAlign="Center"></e-grid-column>
+                <e-grid-column field="Objet" headerText="Objet" textAlign="Center"></e-grid-column>
+                <e-grid-column field="Promotion" headerText="Promotion" textAlign="Center"></e-grid-column>
+               @*  <e-grid-column field="AnneeSortie" headerText="Annee sortie" textAlign="Center"></e-grid-column> *@
+                <e-grid-column field="Session" headerText="Session" textAlign="Center"></e-grid-column>
+                <e-grid-column field="CycleInfo" headerText="Parcours" textAlign="Center"></e-grid-column>
+                @* <e-grid-column field="FiliereInfo" headerText="Filiere" textAlign="Center"></e-grid-column> *@
+                <e-grid-column headerText="Actions" template="#actionColumTemplate" textAlign="Center"> </e-grid-column>
+            </e-grid-columns>
+        </ejs-grid>
+    </div>
+    @* <div class="col-md-3">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa fa-user" fa-2xl aria-hidden="true"></i>
+             HttpContextAccessor.HttpContext.User.Identity.Name 
+        </div>
+    </div> *@
+</div> 
+<script id="rowIndexTemplate" type="text/x-template">
+   <div>${((+ data.index)+1)}</div>
+</script>
+<script id="SourceColumTemplate" type="text/x-template">
+    ${if(Source=="ENS-YDE")}
+        <span class="badge bg-primary">${Source}</span>
+    ${else}
+        <span class="badge bg-success">${Source}</span>
+    ${/if}
+</script>
+
+<script id="actionColumTemplate" style="width:100%" type="text/x-template">
+    <div class="d-flex flex-row g-5 justify-content-center">
+         ${if(Fichier==1)}
+         <span title="Pas de modification fichier existe" class="badge bg-secondary">Non</span>|
+         ${else}
+             <a class="btn btn-sm no-a-decoration btn-primary" href="/Pv/AddOrEdit/${Id}" title="Edit document" >
+             <i class="fa-solid fa-pencil fa-lg "></i>
+         </a>|
+         ${/if}
+          <a class="btn btn-sm no-a-decoration btn-success" href="/Pv/AddPdf/${Id}" title="add scan document">
+            <i class="fa-solid fa-link fa-lg "></i>
+         </a>|
+         ${if(Fichier==1)}
+            <a class="btn btn-sm no-a-decoration btn-info" target="_blank" href="/Pv/showpdf/${Id}" title="show scan document">
+                <i class="fa-solid fa-file-pdf fa-lg "></i>
+            </a>|
+         ${else}
+                <span title="Pas de fichier" class="badge bg-secondary">
+                    <i class="fa-solid fa-low-vision fa-lg "></i>
+                </span>|
+         ${/if}
+         ${if(Fichier==1)}
+           <span title="Interdit de supprimer" class="badge bg-secondary">
+                    <i class="fa-solid fa-trash fa-lg "></i>
+                </span>|
+         ${else}
+                <form action="/Pv/Delete/${Id}" method="post">
+                 <button type="submit" class="btn btn-sm btn-link btn-danger no-a-decoration"
+                 onclick="return confirm(&quot;sure to delete this record (${Id}) &quot;) ">
+                    <i class="fa-solid fa-trash fa-lg"></i>
+                </button>
+             </form>
+         ${/if}
+           
+
+    </div>
+</script>
+<script >
+    function rowSelected(args) {
+        alert("row index : " + args.row.getAttribute('aria-rowindex'));
+    }
+</script>
+

@@ -1,0 +1,127 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    List<Object> menuItems = new List<Object>();
+
+
+    menuItems.Add(new
+    {
+        text = "General",
+        separator = true,
+
+    });
+    menuItems.Add(new
+    {
+        text = "Dashboard",
+        url = "/Dashboard",
+        iconCss = "fa-solid fa-box"
+
+    });
+    menuItems.Add(new
+    {
+        text = "Pvs",
+        url = "/Pv",
+        iconCss="fa-solid fa-folder-open"
+
+    });
+    menuItems.Add(new
+    {
+        text = "Arrêtes",
+        url = "/Arrete",
+        iconCss = "fa-solid fa-list"
+
+    });
+    menuItems.Add(new
+    {
+        text = "Com. / Dec.",
+        url = "/Communique",
+        iconCss = "fa fa-bullhorn"
+
+    });
+    menuItems.Add(new
+    {
+        text = "Autres",
+        url = "/Autre",
+        iconCss = "fa fa-book"
+
+    });
+    menuItems.Add(new
+    {
+        text = "Extras",
+        separator = true,
+
+    });
+    menuItems.Add(new
+    {
+        text = "Reports",
+        url = "/Report",
+        iconCss = "fa-solid fa-folder-closed"
+
+    });
+    menuItems.Add(new
+    {
+        text = "Statistiques",
+        url = "/Statistiques",
+        iconCss = "fa-solid fa-chart-simple"
+
+    });
+    menuItems.Add(new
+    {
+        text = "Config",
+        separator = true,
+
+    });
+    menuItems.Add(new
+    {
+        text = "Parcours",
+        url = "/Cycle",
+        iconCss = "fa-solid fa-graduation-cap"
+    });
+    menuItems.Add(new
+    {
+        text = "Filières",
+        url = "/Filiere",
+        iconCss = "fa-solid fa-external-link" 
+    });
+    menuItems.Add(new
+    {
+        text = "Users",
+        url = "/User",
+        iconCss = "fa fa-user"
+    });
+}
+
+<ejs-sidebar id="sidebar"  width="290px"  enableDock dockSize="100px" target=".dock-target">
+    <e-content-template>
+        @* <div class="logo-wrapper">
+                <div class="app-logo">
+                    <img class="profile-pic" src="~/img/images/logo1.png" title="logo" />
+                </div>
+            <div class="w-100"></div>
+            <i id="sidebar-toggler" class="fa-solid"></i>
+        </div> *@
+        
+        <div class="profile-wraper">
+                    <img class="profile-pic" src="~/img/images/logo.jpg" title="profile" />
+                    <div class="titles d-flex flex-column ps-3">
+                        <h3 class="mb-0">GED</h3>
+                        <h5><span class="text-muted">Ens-Yde</span></h5>
+                        <h5>@TempData.Peek("User")</h5>    
+                    </div>
+        </div>
+        
+        <ejs-menu id="menu" items="menuItems" orientation="Vertical">
+
+        </ejs-menu>
+        
+    </e-content-template>
+</ejs-sidebar>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        dockBar = document.getElementById('sidebar').ej2_instances[0];
+        document.getElementById('sidebar-toggler').onclick=function () {
+            dockBar.toggle();
+        }
+    });
+</script>

@@ -1,0 +1,77 @@
+﻿@model GED_APP.Models.Doc
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    // ViewData["Title"] = "Create";
+    ViewData["PageTitle"] = Model.Id == 0 ? "Create new Pv" : "Edit Pv";
+}
+<div class="row">
+    <div class="col-md-9">
+        <div class="widget p-4">
+            <form asp-action="AddOrEdit" >
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="Id" value="@Model.Id" />
+                
+                <input type="hidden" name="TypeDoc" value="@Model.TypeDoc" />
+                <div class="row widget">
+                    <div class="col-md-12">
+                        <div class="mb-2">
+                            <div class='e-btn-group custom-rbt-group'>
+                                <input type="radio" id="radioleft" name="Source" value="ENS-YDE" checked="@(Model.Source=="ENS-YDE")" />
+                                <label class="e-btn" for="radioleft">ENS-YDE</label>
+                                <input type="radio" id="radioright" name="Source" value="ENS-BAMBILI" checked="@(Model.Source=="ENS-BAMBILI")" />
+                                <label class="e-btn" for="radioright">ENS-BAMBILI</label>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+
+                            <ejs-textbox id="objet" multiline="true" placeholder="Objet" floatLabelType="Always" ejs-for="Objet"></ejs-textbox>
+                            <span asp-validation-for="Objet" class="text-danger"></span>
+                        </div>
+                        <div class="mb-2">
+                            <ejs-textbox id="promotion" placeholder="Promotion" floatLabelType="Always" ejs-for="Promotion"></ejs-textbox>
+                            <span asp-validation-for="Promotion" class="text-danger"></span>
+                        </div>
+                        <div class="mb-2">
+                            <ejs-maskedtextbox mask="9999" id="annee" placeholder="Annee sortie" floatLabelType="Always" ejs-for="AnneeSortie"></ejs-maskedtextbox>
+                            <span asp-validation-for="AnneeSortie" class="text-danger"></span>
+                        </div>
+                        <div class="mb-2">
+                            <ejs-maskedtextbox mask="aaaa-9999" id="session" placeholder="Session" floatLabelType="Always" ejs-for="Session"></ejs-maskedtextbox>
+                            <span asp-validation-for="Session" class="text-danger"></span>
+                        </div>
+                        <div class="mb-2">
+                            <ejs-dropdownlist id="diplome" dataSource="@ViewBag.Cycles" allowFiltering="true" ignoreAccent="true" filterType="Contains" popupHeight="220px" placeholder="Parcours" floatLabelType="Always" ejs-for="CycleId">
+                                <e-dropdownlist-fields value="Id" text="Code"></e-dropdownlist-fields>
+
+                            </ejs-dropdownlist>
+                        </div>
+                        <div class="mb-2">
+                            <ejs-dropdownlist id="filiere" dataSource="@ViewBag.Filieres" allowFiltering="true" ignoreAccent="true" filterType="Contains" popupHeight="220px" placeholder="Filiere" floatLabelType="Always" ejs-for="FiliereId">
+                                <e-dropdownlist-fields value="Id" text="Code"></e-dropdownlist-fields>
+
+                            </ejs-dropdownlist>
+                        </div>
+                        <div class="mb-2">
+                            <ejs-textbox id="Signataire" placeholder="Signataire" floatLabelType="Always" ejs-for="Signataire"></ejs-textbox>
+                            <span asp-validation-for="Signataire" class="text-danger"></span>
+                        </div>
+                    </div>
+                       
+                 </div>
+                   
+                <ejs-button id="submit" cssClass="e-success align-center" type="submit" content="submit"></ejs-button>
+            </form>
+        </div>
+    </div> 
+    <div class="col-md-3">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <div class="image" style="width:40px; height:50px;">
+            </div>
+            <i class="fa fa-user" fa-2xl aria-hidden="true"></i>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,43 @@
+﻿@model GED_APP.Models.User
+
+@{
+    // ViewData["Title"] = "Create";
+    ViewData["PageTitle"] = Model.Id == 0 ? "Create new user" : "Edit user";
+}
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="widget p-4">
+            <form asp-action="AddOrEdit">
+               
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="Id" value="@Model.Id" />
+                <div class="mb-2">
+                    <ejs-textbox id="UserName" placeholder="Username" floatLabelType="Always" ejs-for="UserName" ></ejs-textbox>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="mb-2">
+                    <ejs-textbox id="email" placeholder="Email" floatLabelType="Always" ejs-for="UserEmail"></ejs-textbox>
+                    <span asp-validation-for="UserEmail" class="text-danger"></span>
+                </div>
+                <div class="mb-2">
+                    <ejs-textbox id="role" placeholder="Role" floatLabelType="Always" ejs-for="Role"></ejs-textbox>
+                    <span asp-validation-for="Role" class="text-danger"></span>
+                </div>
+                <div class="mb-2">
+                    <ejs-textbox type="password" id="Password" placeholder="Password" floatLabelType="Always" ejs-for="Password"></ejs-textbox>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <ejs-button id="submit" cssClass="e-success" type="submit" content="submit"></ejs-button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-regular fa-user fa-2xl"  aria-hidden="true"></i>
+          
+        </div>
+
+    </div>
+</div>

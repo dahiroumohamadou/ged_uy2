@@ -1,0 +1,79 @@
+﻿@* @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor; *@
+@model IEnumerable<GED_APP.Models.Doc>
+@{
+    // ViewData["Title"] = "List of personnel";
+    ViewData["PageTitle"] = "Documents";
+    // ViewData["PageActionText"] = "+ New Document";
+    // ViewData["PageActionUrl"] = "/Autre/AddOrEdit";
+}
+
+
+@* <p class="text-purple-700 text-opacity-100 ...">The quick brown fox ...</p>
+<p class="text-purple-700 text-opacity-75 ...">The quick brown fox ...</p>
+<p class="text-purple-700 text-opacity-50 ...">The quick brown fox ...</p>
+<p class="text-purple-700 text-opacity-25 ...">The quick brown fox ...</p>
+<p class="text-purple-700 text-opacity-0 ...">The quick brown fox ...</p> *@
+@if (@TempData["AlertMessage"] != null)
+{
+
+    <script src="/lib/jquery//dist/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+        @*  swal("Infos : ", '@TempData["AlertMessage"]', "success");*@
+                swal("Infos : ", '@TempData["AlertMessage"]', "info");
+        @*  swal("Infos : ", '@TempData["AlertMessage"]', "warning"); *@
+                                };
+    </script>
+    @* <div class="alert alert-success">
+        @TempData["AlertMessage"]
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+    </div> *@
+}
+<div class="row justify-content-center align-items-center" style="margin-top:100px;">
+    <div class="col-md-7">
+        <div class="widget p-4">
+            <div class="row justify-content-center align-items-center">
+               @*  <div class="col">
+                    <h4>Report documents .</h4>
+                    <p>
+                        This form help to print the list of  documents by years
+                    </p>
+                </div> *@
+                <div class="col-md-5 blocLoginDroite">
+                    <div class=" p-4">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-md-3">
+                                <div class="profile">
+                                    <i class="fa-regular fa-calendar fa-2xl"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form asp-action="print">
+                            @* <form asp-action="printByYear"> *@
+                            <div class="row justify-content-center align-items-center">
+                                @* <div class="col-md-7"> *@
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                @*   <input type="hidden" name="Id" value="@Model.Id" /> *@
+                                <div class="mt-2 mb-2">
+                                    <ejs-maskedtextbox mask="9999" id="Annee" value="annee"  type="text" placeholder="ANNEE / YEARS" title="Enter the years" floatLabelType="Always"></ejs-maskedtextbox>
+                                    <span  class="text-danger"></span>
+                                </div>
+                                <ejs-button id="btnLogin" cssClass="e-success e-btn-lg" type="submit" target="_blank" content="Print" title="This form help to print the list of  documents by years">  </ejs-button>
+                            </div>
+                           
+                            @*  </div> *@
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

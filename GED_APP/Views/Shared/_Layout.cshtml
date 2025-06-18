@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> ged</title>
+    <link media="screen" rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/6.3.8/sweetalert2.min.css" />
+    <link media="screen" rel="stylesheet" href='https://cdn.jsdelivr.net/sweetalert2/6.3.8/sweetalert2.css' />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/css/tailwind.css" rel="stylesheet" />
+      <!-- Syncfusion ASP.NET Core controls styles -->
+    @* <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/24.1.41/material.css" /> *@
+    @* dark bootstrap by synfusion *@
+     <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/24.1.41/bootstrap5-dark.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    @* <link href="~/css/tailwind.debug.css" rel="stylesheet" asp-append-version="true" /> *@
+     <!-- Syncfusion ASP.NET Core controls scripts -->
+    <script src="https://cdn.syncfusion.com/ej2/24.1.41/dist/ej2.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/sweetalert2/6.3.8/sweetalert2.min.js"></script>
+</head>
+<body class="e-bigger	background-color: rgb(239 68 68)">
+    @if ((ViewData["isLogin"] == null))
+    {
+        <partial name="_SideBar" />
+    }
+    <div class="dock-target">
+        <nav class="navbar sticky-top">
+            @* @if ((ViewData["isLogin"] == null))
+            { *@
+                <div class="container-fluid px-4 py-2">
+                    <i id="sidebar-toggler" class="fa-solid fa-bars"></i>
+                <div>
+                <i class="fa-solid fa-bell"></i>
+                <i class="fa-solid fa-message"></i>
+                    @*  @if ((TempData["User"] != null))
+                    { *@
+                        <i class="fa-solid fa-user-circle" title="@TempData.Peek("User")" ></i>
+                        <a asp-controller="Dashboard" asp-action="LogOut"> <i class="fa-solid fa-power-off"></i></a>
+                    @* } *@
+                    
+                </div>
+            </div>
+            @* } *@
+        </nav>
+            
+    <div class="main-content">
+        <div class="container mt-5">
+            <div id="contenuG" class="row d-flex h-100 align-content-center justify-content-center">
+                <div class="col-12  align-content-center">
+                         @* @if (ViewData["isLogin"] == null)
+                        {  *@
+                            <main role="main" class="pb-3">
+@*                             @if ((ViewData["isDashboard"] == null) || (ViewData["isLogin"] == null))
+ *@                            @if ((ViewData["isLogin"] == null))
+                                {
+                                    <div class="row">
+                                        <div class="col-md-11">
+                                            <div class="d-flex flex-column mb-5">
+                                                <div class="d-flex mb-1">
+                                                    <div class="flex-grow-1">
+                                                        <h3 class="fw-bold">@ViewData["PageTitle"]</h3>
+                                                    </div>
+                                                    <div>
+                                                        @if (ViewData["PageActionText"] != null)
+                                                        {
+                                                            <a class="btn btn-success text-white" href="@ViewData["PageActionUrl"]">
+                                                                @ViewData["PageActionText"]
+                                                            </a>
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                                <ejs-breadcrumb id="breadcrumb" separatorTemplate="@Html.Raw("<span class='fa-solid fa-angle-right'> </span>")"> </ejs-breadcrumb>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @RenderBody()
+                            </main>
+                      @*   }   *@                     
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <footer class="border-top footer text-muted  align-items-center">
+        <div class="container ">
+            &copy; 2024 - All Rights reserved by - <a asp-area="" asp-controller="" asp-action="Privacy">Ing Dahirou</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <!-- Syncfusion ASP.NET Core Script Manager -->
+    <ejs-scripts></ejs-scripts>
+</body>
+</html>

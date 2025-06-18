@@ -1,0 +1,153 @@
+﻿@model IEnumerable<GED_APP.Models.Doc>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["isDashboard"] = true;
+    var index = new int[] { 4 };
+    var sumindex = new int[] { 8 };
+}
+@* summary *@
+<div class="row mb-4">
+    @* <div class="col-md-3">
+        <div class="d-flex flex-row widget summary income">
+            <div class="d-flex flex-column justify-content-center p-5">
+                <i class="fa-solid fa-dollar-sign fa-2xl"></i>
+            </div>
+            <div class="d-flex flex-column m-auto py-3">
+                <span class="lead">Total montant adhesion</span>
+                <h1 class="display-6 fw-bold">@ViewBag.SumAdhesion</h1>
+            </div>
+        </div>
+    </div> *@
+    <div class="col-md-4">
+        <div class="d-flex flex-row widget summary income">
+            <div class="d-flex flex-column justify-content-center p-5">
+                <i class="fa-solid fa-1xl">Pv</i>
+            </div>
+            <div class="d-flex flex-column m-auto py-3">
+                <span class="lead">Procès-Verbaux</span>
+                <h1 class="display-6 fw-bold">@ViewBag.pvs</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="d-flex flex-row widget summary expense">
+            <div class="d-flex flex-column justify-content-center p-5">
+                <i class="fa-solid fa-1xl">Arretes</i>
+            </div>
+            <div class="d-flex flex-column m-auto py-3">
+                <span class="lead">Arretés</span>
+                <h1 class="display-6 fw-bold">@ViewBag.arretes</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="d-flex flex-row widget summary balance">
+            <div class="d-flex flex-column justify-content-center p-5">
+                <i class="fa-solid  fa-1xl">CRP</i>
+            </div>
+            <div class="d-flex flex-column m-auto py-3">
+                <span class="lead">Communiqués</span>
+                <h1 class="display-6 fw-bold">@ViewBag.communiques</h1>
+            </div>
+        </div>
+    </div>
+    
+</div>
+@* chart *@
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="widget chart">
+            <div class="p-4">
+                <h5 class="fw-bold">Nombre des documents numérisés de l'année encours'</h5>
+            </div>
+            <ejs-accumulationchart id="doughnutchart" enableSmartLabels background="1a222b" palettes="@(new string []{"#54ffa9","#ffe91a"})" >
+                <e-accumulation-series-collection>
+                    <e-accumulation-series dataSource="@ViewBag.DossiersChartData"
+                                           xName="type" yName="nbeDossiers"
+                    innerRadius="60%"
+                    legendShape="Circle">
+                        <e-accumulationseries-datalabel name="structure" visible></e-accumulationseries-datalabel>
+                    </e-accumulation-series>
+                </e-accumulation-series-collection>
+                <e-accumulationchart-legendsettings position="Top" toggleVisibility="false" >
+                    <e-legendsettings-textstyle color="#fff" size="1rem"></e-legendsettings-textstyle>
+                </e-accumulationchart-legendsettings>
+                <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>
+            </ejs-accumulationchart>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="widget chart">
+            <div class="p-4">
+                <h5 class="fw-bold"> ENS-YDE    VS    ENS-BAMBILI</h5>
+            </div>
+            <ejs-chart id="container" background="#1a222b" palettes="@(new string []{"#54ffa9","#ffe91a", "#24b4fa", "#24c4fb"})">
+                
+                <e-chart-primaryxaxis valueType="Category">
+                    <e-majorgridlines width="0"></e-majorgridlines>
+                   <e-majorticklines width="0"></e-majorticklines>
+                </e-chart-primaryxaxis>
+              <e-chart-primaryyaxis valueType="Double">
+                    <e-majorgridlines width="1" color="#32414d"></e-majorgridlines>
+                   <e-majorticklines width="0"></e-majorticklines>
+                </e-chart-primaryyaxis>
+                <e-chart-chartarea>
+                    <e-chartarea-border width="0" ></e-chartarea-border> 
+                </e-chart-chartarea> 
+                <e-series-collection>
+                    @* <e-series dataSource="ViewBag.DossiersChartData" xName="type" yName="nbeDossiers"
+                              type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline">
+                    </e-series> *@
+                    <e-series dataSource="ViewBag.DossiersChartDataSpline1" xName="type" yName="nbeDossiers" name="ENS-YDE" width="5"
+                              type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline">
+                    </e-series>
+                    <e-series dataSource="ViewBag.DossiersChartDataSpline2" xName="type" yName="nbeDossiers" name="ENS-BAMBILI" width="5"
+                              type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline">
+                    </e-series>
+                </e-series-collection>
+                <e-chart-legendsettings position="Top"  toggleVisibility="false" >
+                    <e-legendsettings-textstyle color="#fff" size="1rem"></e-legendsettings-textstyle>
+                </e-chart-legendsettings>
+                <e-chart-tooltipsettings shared enable></e-chart-tooltipsettings>
+            </ejs-chart> 
+        </div>
+
+    </div>
+</div>
+@* recent dossiers and more *@
+<div class="row">
+    <div class="col-md-6">
+        <div class="widget">
+            <div class="p-4">
+                <h5 class="fw-bold">Recent Documents</h5>
+            </div>
+            <div class="px-4 pb-4">
+                    <ejs-grid id="Grid"
+                          dataSource="@ViewBag.DossiersRecent"
+                              gridLines="None"
+                              allowSorting="true"
+                              allowPaging="true"
+                              gridlines="None">
+                        <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
+                        <e-grid-columns>
+                            <e-grid-column field="TypeDoc" headerText="Type" textAlign="Center"></e-grid-column>
+                            <e-grid-column field="Objet" headerText="Objet" textAlign="Center"></e-grid-column>
+                            <e-grid-column field="Source" headerText="Source" textAlign="Center"></e-grid-column>
+                        </e-grid-columns>
+                    </ejs-grid>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="widget h-100">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <span><i class="fa-solid fa-plus fa-2xl">Widget</i></span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

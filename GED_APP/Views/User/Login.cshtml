@@ -1,0 +1,87 @@
+﻿@model GED_APP.Models.User;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["isLogin"] = true;
+}
+@if (@TempData["AlertMessage"] != null)
+{
+
+    <script src="/lib/jquery//dist/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+        @*  swal("Infos : ", '@TempData["AlertMessage"]', "success");*@
+                swal("Infos : ", '@TempData["AlertMessage"]', "info");
+        @*  swal("Infos : ", '@TempData["AlertMessage"]', "warning"); *@
+                        };
+    </script>
+    @* <div class="alert alert-success">
+        @TempData["AlertMessage"]
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+    </div> *@
+}
+<div class="row justify-content-center align-items-center" style="margin-top:200px;">
+   <div class="col-md-7">
+        <div class="widget p-4">
+             <div class="row justify-content-center align-items-center">
+            <div class="col">
+                <h4>Welcome to GED APP .</h4>
+                <p>This is an application to manage electronic documents
+                       
+
+                </p>
+            </div>
+                <div class="col-md-5 blocLoginDroite">
+                <div class=" p-4">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-md-3">
+                            <div class="profile">
+                               <i class="fa-regular fa-user fa-2xl"></i>
+                              </div>
+                        </div>
+                    </div>
+                   
+                       <form asp-action="Login" >
+                            <div class="row justify-content-center align-items-center">
+                                @* <div class="col-md-7"> *@
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                @*   <input type="hidden" name="Id" value="@Model.Id" /> *@
+                                <div class="mb-2">
+                                    <ejs-textbox id="useremian" type="email" placeholder="Email" floatLabelType="Always" ejs-for="UserEmail"></ejs-textbox>
+                                    <span asp-validation-for="UserEmail" class="text-danger"></span>
+                                </div>
+                                <div class="mb-2">
+                                    <ejs-textbox type="password" id="password" placeholder="Password" floatLabelType="Always" ejs-for="Password"></ejs-textbox>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+
+                                <ejs-button id="btnLogin" cssClass="e-success e-btn-lg" type="submit" content="Login">  </ejs-button>
+                                @if (ViewData["validateMessage"] != null)
+                                {
+                                    <br />
+                                    <br />
+                                    @ViewData["validateMessage"]
+
+                                }
+                                </div>
+                            <div class="row justify-content-left align-items-left">
+                                <div class="col-md-12" style="font-size:12px; text-decoration:none; font-weight:bold; text-align:right; color:#fff; margin-top:10px"><a href="#">Forgot password ?</a></div>
+                            </div>
+                            
+                           @*  </div> *@
+                        </form>
+                   
+                </div>
+            </div>
+        </div>
+         </div>
+   </div>
+</div>
+
+
+   
+
