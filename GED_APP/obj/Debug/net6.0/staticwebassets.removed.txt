@@ -1,0 +1,2 @@
+C:\Users\MOHAMADOU\source\repos\GED_APP_UYII\GED_APP\wwwroot\css\style.css
+C:\Users\MOHAMADOU\source\repos\GED_APP_UYII\GED_APP\wwwroot\css\tailwind.css
