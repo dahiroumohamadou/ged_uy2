@@ -103,6 +103,7 @@ namespace GED_APP.Repository.Implementations
                 u.UserEmail = user.UserEmail;
                 u.UserName = user.UserName;
                 u.Password = user.Password;
+                u.Service=user.Service;
                 u.Role = user.Role;
                 _context.Users.Update(u);
                 _context.SaveChanges();

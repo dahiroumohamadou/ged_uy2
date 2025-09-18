@@ -17,6 +17,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options =>
     {
         options.LoginPath = "/User/Login";
+        options.AccessDeniedPath = "/User/AccesDenied";
         options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
          
     });
@@ -49,6 +50,32 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 // All Interfaces 
+builder.Services.AddScoped<_ICorrespondance, _CorrespondanceRepo>();
+builder.Services.AddScoped<_IContrat, _ContratRepo>();
+builder.Services.AddScoped<_IDecision, _DecisionRepo>();
+builder.Services.AddScoped<_ICommunique,  _CommuniqueRepo>();
+builder.Services.AddScoped<_IAttestation,  _AttestationRepo>();
+builder.Services.AddScoped<_IArrete,  _ArreteRepo>();
+builder.Services.AddScoped<_IDecret,  _DecretRepo>();
+builder.Services.AddScoped<_IEtatPaiement, _EtatPaiementRepo>();
+builder.Services.AddScoped<_ICertificat, _CertificatRepo>();
+builder.Services.AddScoped<_INoteService, _NoteServiceRepo>();
+
+builder.Services.AddScoped<IChronogramme, ChronogrammeRepo>();
+builder.Services.AddScoped<IStructure,  StructureRepo>();
+builder.Services.AddScoped<IRapport, RapportRepo>();
+builder.Services.AddScoped<ICorrespondance, CorrespondanceRepo>();
+builder.Services.AddScoped<IDossier, DossierRepo>();
+builder.Services.AddScoped<ISource, SourceRepo>();
+builder.Services.AddScoped<IFaculte, FaculteRepo>();
+builder.Services.AddScoped<IFilieree, FiliereeRepo>();
+builder.Services.AddScoped<IExamen, ExamenRepo>();
+builder.Services.AddScoped<IPvExamen, PvExamenRepo>();
+builder.Services.AddScoped<IPvCne, PvCneRepo>();
+builder.Services.AddScoped<IArrete,  ArreteRepo>();
+builder.Services.AddScoped<IListe, ListeRepo>();
+builder.Services.AddScoped<IDecharge,  DechargeRepo>();
+
 builder.Services.AddScoped<ICycle, CycleRepo>();
 builder.Services.AddScoped<IFiliere, FiliereRepo>();
 builder.Services.AddScoped<IDocument, DocumentRepo>();
@@ -60,7 +87,9 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
 }
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();

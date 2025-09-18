@@ -23,15 +23,20 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/sweetalert2/6.3.8/sweetalert2.min.js"></script>
 </head>
 <body class="e-bigger	background-color: rgb(239 68 68)">
-    @if ((ViewData["isLogin"] == null))
+   
+    @if ((ViewData["isLogin"]==null) )
     {
         <partial name="_SideBar" />
     }
+   @*  @if ((ViewData["isAccesDenied"] == null))
+    {
+        <partial name="_SideBar" />
+    } *@
     <div class="dock-target">
         <nav class="navbar sticky-top">
-            @* @if ((ViewData["isLogin"] == null))
-            { *@
-                <div class="container-fluid px-4 py-2">
+             @if ((ViewData["isLogin"] == null))
+            { 
+                <div class="container-fluid px-2 py-0">
                     <i id="sidebar-toggler" class="fa-solid fa-bars"></i>
                 <div>
                 <i class="fa-solid fa-bell"></i>
@@ -44,22 +49,23 @@
                     
                 </div>
             </div>
-            @* } *@
+            } 
         </nav>
             
     <div class="main-content">
-        <div class="container mt-5">
+        <div class="container mt-2">
             <div id="contenuG" class="row d-flex h-100 align-content-center justify-content-center">
                 <div class="col-12  align-content-center">
                          @* @if (ViewData["isLogin"] == null)
                         {  *@
                             <main role="main" class="pb-3">
 @*                             @if ((ViewData["isDashboard"] == null) || (ViewData["isLogin"] == null))
- *@                            @if ((ViewData["isLogin"] == null))
+ *@                          @if (ViewData["isLogin"] == null) 
+                             @* @if (ViewData["isAccesDenied"] == null) *@
                                 {
                                     <div class="row">
-                                        <div class="col-md-11">
-                                            <div class="d-flex flex-column mb-5">
+                                        <div class="col-12">
+                                            <div class="d-flex flex-column mb-2">
                                                 <div class="d-flex mb-1">
                                                     <div class="flex-grow-1">
                                                         <h3 class="fw-bold">@ViewData["PageTitle"]</h3>
@@ -90,7 +96,7 @@
     </div>
     <footer class="border-top footer text-muted  align-items-center">
         <div class="container ">
-            &copy; 2025 - All Rights reserved by - <a asp-area="" asp-controller="" asp-action="Privacy">Ing Dahirou</a>
+            &copy; 2025 - All Rights reserved by - <a asp-area="" asp-controller="" asp-action="Privacy">Ing Dahirou</a> Contact:  <a asp-area="" asp-controller="" asp-action="Privacy">(+237) 672 28 28 72     </a><span>Date:   @DateTime.Now</span>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

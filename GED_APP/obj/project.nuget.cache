@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gRSEIA5K1gg=",
+  "dgSpecHash": "YoPz+15h4Tc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP\\GED_APP\\GED_APP.csproj",
+  "projectFilePath": "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP_UYII\\GED_APP\\GED_APP.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MOHAMADOU\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
     "C:\\Users\\MOHAMADOU\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
@@ -272,12 +272,21 @@
   ],
   "logs": [
     {
+      "code": "NU1900",
+      "level": "Warning",
+      "message": "Une erreur s’est produite lors de l’obtention des données de vulnérabilité du package\u00A0: Impossible de charger l'index de service pour la source https://api.nuget.org/v3/index.json.",
+      "projectPath": "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP_UYII\\GED_APP\\GED_APP.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP_UYII\\GED_APP\\GED_APP.csproj",
+      "targetGraphs": []
+    },
+    {
       "code": "NU1701",
       "level": "Warning",
       "message": "Le package 'iTextSharp 5.5.13.4' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' au lieu du framework cible du projet 'net6.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
-      "projectPath": "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP\\GED_APP\\GED_APP.csproj",
+      "projectPath": "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP_UYII\\GED_APP\\GED_APP.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP\\GED_APP\\GED_APP.csproj",
+      "filePath": "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP_UYII\\GED_APP\\GED_APP.csproj",
       "libraryId": "iTextSharp",
       "targetGraphs": [
         "net6.0"

@@ -25,10 +25,13 @@ html {
 }
 
 body {
-    margin-top:50px;
+    margin-top: 50px;
     margin-bottom: 60px;
+    /*background-color: #f8f9fa;*/
     background-color: #12161d;
-    height:100%;
+    /*background: url("../img/images/font/content.PNG");*/
+    /*background-color: rgba(156, 156, 163, 0.50);*/
+    height: 100%;
     color: #fff;
     overflow: hidden;
 }
@@ -113,10 +116,15 @@ img.profile-pic {
 }
 .e-grid{
     border:0;
-    border-radius:5px,
+    border-radius:5px;
+   
 }
+    .e-grid .e-gridcontent {
+        padding: 10px;
+    }
 .e-grid .e-gridcontent, .e-grid .e-table{
     background-color: #1a222b;
+   
 }
 .e-grid .e-gridhear{
     border:5px;
@@ -320,4 +328,29 @@ img.profile-pic {
         border: 1px solid #fff;
     }
 
+ /*acces denied*/
+.card {
+    background-color: #1a222b;
+    border-radius: 15px;
+}
+.card-body {
+    background-color: rgba(156, 156, 163, 0.30);
+}
 
+.fa-exclamation-triangle {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

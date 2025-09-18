@@ -1,10 +1,10 @@
-﻿@model GED_APP.Models.Doc
+﻿@model GED_APP.Models.Arrete
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
     // ViewData["Title"] = "Create";
-    ViewData["PageTitle"] = "Add document pdf";
+    ViewData["PageTitle"] = "Add arrete pdf";
 }
 <div class="row">
     <div class="col-md-9">
@@ -12,44 +12,39 @@
             <form asp-action="AddPdf" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" name="Id" value="@Model.Id" />
-                <input type="hidden" name="Source" value="@Model.Source" />
-                <input type="hidden" name="TypeDoc" value="@Model.TypeDoc" />
-
                 <div class="row widget">
                     <div class="col-md-12">
                         <div class="mb-2">
                             <div class='e-btn-group custom-rbt-group'>
-                                <input type="radio" id="radioleft" name="Source" value="ENS-YDE" checked="@(Model.Source=="ENS-YDE")" />
-                                <label class="e-btn" for="radioleft">ENS-YDE</label>
-                                <input type="radio" id="radioright" name="Source" value="ENS-BAMBILI" checked="@(Model.Source=="ENS-BAMBILI")" />
-                                <label class="e-btn" for="radioright">ENS-BAMBILI</label>
+                                <input type="radio" id="radiodcaa" name="Origine" value="DCAA" checked="@(Model.Origine == "DCAA")" />
+                                <label class="e-btn" for="radiodcaa">DCAA</label>
+                                <input type="radio" id="radiosdsaa" name="Origine" value="SDSAA" checked="@(Model.Origine == "SDSAA")" />
+                                <label class="e-btn" for="radiosdsaa">SDSAA</label>
+                                <input type="radio" id="radiosdda" name="Origine" value="SDDA" checked="@(Model.Origine == "SDDA")" />
+                                <label class="e-btn" for="radiosdda">SDDA</label>
+                                <input type="radio" id="radiosde" name="Origine" value="SDE" checked="@(Model.Origine == "SDE")" />
+                                <label class="e-btn" for="radiosde">SDE</label>
                             </div>
                         </div>
                         <div class="mb-2">
-                            <ejs-textbox id="Numero" placeholder="Numero" floatLabelType="Always" ejs-for="Numero"></ejs-textbox>
+                            <ejs-textbox id="numProg" placeholder="Numero" floatLabelType="Always" ejs-for="Numero"></ejs-textbox>
                             <span asp-validation-for="Numero" class="text-danger"></span>
                         </div>
                         <div class="mb-2">
-                            <ejs-textbox id="date" placeholder="Date signature" floatLabelType="Always" ejs-for="DateSign"></ejs-textbox>
-                            <span asp-validation-for="DateSign" class="text-danger"></span>
-                        </div>
-                        <div class="mb-2">
-
                             <ejs-textbox id="objet" multiline="true" placeholder="Objet" floatLabelType="Always" ejs-for="Objet"></ejs-textbox>
                             <span asp-validation-for="Objet" class="text-danger"></span>
                         </div>
                         <div class="mb-2">
-                            <ejs-textbox id="annee" placeholder="Annee academique" floatLabelType="Always" ejs-for="AnneeAcademique"></ejs-textbox>
-                            <span asp-validation-for="AnneeAcademique" class="text-danger"></span>
+                            <ejs-maskedtextbox mask="99-99-9999" id="datesgn" placeholder="Date signature" floatLabelType="Always" ejs-for="DateSign"></ejs-maskedtextbox>
+                            <span asp-validation-for="DateSign" class="text-danger"></span>
                         </div>
                         <div class="mb-2">
-                            <ejs-dropdownlist id="cycle" dataSource="@ViewBag.Cycles" allowFiltering="true" ignoreAccent="true" filterType="Contains" popupHeight="220px" placeholder="Cycle" floatLabelType="Always" ejs-for="CycleId">
-                                <e-dropdownlist-fields value="Id" text="Code"></e-dropdownlist-fields>
-                            </ejs-dropdownlist>
+                            <ejs-textbox id="numcne" placeholder="Numero session" floatLabelType="Always" ejs-for="NumeroCNE"></ejs-textbox>
+                            <span asp-validation-for="NumeroCNE" class="text-danger"></span>
                         </div>
                         <div class="mb-2">
-                            <ejs-textbox id="Signataire" placeholder="Signataire" floatLabelType="Always" ejs-for="Signataire"></ejs-textbox>
-                            <span asp-validation-for="Signataire" class="text-danger"></span>
+                            <ejs-maskedtextbox mask="99-99-9999" id="datecne" placeholder="Date session" floatLabelType="Always" ejs-for="DateCne"></ejs-maskedtextbox>
+                            <span asp-validation-for="DateCne" class="text-danger"></span>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">Uploaod pdf document</label>

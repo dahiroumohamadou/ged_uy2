@@ -13,6 +13,9 @@ namespace GED_APP.Models
         public ICollection<Chronogramme>? Chronos { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
+        public ICollection<Correspondance>? Correspondances { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
         public ICollection<Dossier>? Dossiers { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
@@ -26,6 +29,12 @@ namespace GED_APP.Models
         [JsonIgnore]
         [IgnoreDataMember]
         public ICollection<Arrete>? Arretes { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
+        public ICollection<Liste>? Listes { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
+        public ICollection<Decharge>? Decharges { get; set; }
         public DateTime? Created { get; set; } = DateTime.Now;
         public DateTime? Updated { get; set; } = DateTime.Now;
     }

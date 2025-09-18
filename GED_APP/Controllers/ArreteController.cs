@@ -13,26 +13,25 @@ namespace GED_APP.Controllers
     //[Authorize]
     public class ArreteController : Controller
     {
-        private readonly IDocument _arreteRepo;
-        private readonly ICycle _cycleRepo;
-        private readonly IFileUploadService _uploadService;
+        private readonly IArrete _arreteRepo;
+        private readonly IStructure _structureRepo;
         private readonly IWebHostEnvironment _environment;
         public string path;
-        public string type = "ARR";
-        public ArreteController(IDocument arreteRepo, ICycle cycleRepo, IFileUploadService fileUploadService, IWebHostEnvironment environment)
+
+        public ArreteController(IArrete arreteRepo, IStructure structRepo, IWebHostEnvironment environment)
         {
             _arreteRepo = arreteRepo;
-            _cycleRepo = cycleRepo;
-            _uploadService = fileUploadService;
+            _structureRepo = structRepo;
             _environment = environment;
         }
         [HttpGet]
         public IActionResult Index()
         {
-           
-            type = "ARR";
-            ICollection<Doc> arretes = null;
-            arretes=_arreteRepo.GetAllByType(type);
+            ICollection<Arrete> arretes = null;
+            // string c = "SDE";
+            // string an = "2025";
+            //arretes = _arreteRepo.GetAllByCodeAnne(c, an);
+            arretes = _arreteRepo.GetAll();
             //arretes = JsonConvert.DeserializeObject<List<Doc>>(arretes);
             ViewBag.DataSource = arretes;
             return View(arretes);
@@ -41,15 +40,15 @@ namespace GED_APP.Controllers
         public IActionResult AddOrEdit(int id = 0)
         {
             //_httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
-            Doc ar = new Doc();
-            OnloadCycle();
+            Arrete ar = new Arrete();
+            OnloadStructure();
             if (id == 0)
             {
-                return View(new Doc());
+                return View(new Arrete());
             }
             else
             {
-                ar=_arreteRepo.GetById(id);
+                ar = _arreteRepo.GetById(id);
 
             }
             return View(ar);
@@ -57,49 +56,48 @@ namespace GED_APP.Controllers
         }
         [HttpPost, ActionName("AddOrEdit")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("Id, Source, Numero, DateSign, Objet, TypeDoc, AnneeAcademique, CycleId, Fichier, Signataire")] Doc a)
+        public async Task<IActionResult> AddOrEdit([Bind("Id, Numero, DateSign, Objet, Origine, NumeroCNE, DateCne, StructureId, Status, Updated")] Arrete a)
         {
             int existe = 0;
-            int res;
-            Doc arr = new Doc();
+            int resp;
+            Arrete arr = new Arrete();
 
+            //_httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
             if (ModelState.IsValid)
             {
-                
-                OnloadCycle();
-                a.TypeDoc = "ARR";
-                
+                Structure s = _structureRepo.GetByCode(a.Origine);
+
                 if (a.Id == 0)
                 {
-                    arr = _arreteRepo.ExisteAr(a.Source, a.Numero, a.DateSign, a.AnneeAcademique, a.CycleId);
-                    if(arr != null)
+                    existe = _arreteRepo.Existe(a);
+                    if (existe > 0)
                     {
-                        existe = 1;
-                        TempData["AlertMessage"] = "Arrete  existe deja .....";
+                        TempData["AlertMessage"] = "Document existe deja.....";
                         return RedirectToAction("Index");
                     }
-                    if (existe == 0)
+                    else
                     {
-                        res = _arreteRepo.Add(a);
-                        if (res > 0)
+                        a.StructureId = s.Id;
+                        resp = _arreteRepo.Add(a);
+                        if (resp > 0)
                         {
-                            TempData["AlertMessage"] = "Enregistrement effectué avec succès...";
+                            TempData["AlertMessage"] = "Enregistrement effectué avec succès.....";
                             return RedirectToAction("Index");
                         }
                         else
                         {
-                            TempData["AlertMessage"] = "Erreur d'enregistrement.....";
+                            TempData["AlertMessage"] = "Erreur d'enregistrement .....";
                             return RedirectToAction("Index");
                         }
                     }
-
                 }
                 else
                 {
-                    res=_arreteRepo.Update(a);
-                    if(res > 0)
+                    a.StructureId = s.Id;
+                    resp = _arreteRepo.Update(a);
+                    if (resp > 0)
                     {
-                        TempData["AlertMessage"] = "Mise à jour effectué avec succès.....";
+                        TempData["AlertMessage"] = "Mise à jour effectuée avec succès.....";
                         return RedirectToAction("Index");
                     }
                 }
@@ -115,8 +113,8 @@ namespace GED_APP.Controllers
             int res;
             if (id > 0)
             {
-                res=_arreteRepo.Delete(id);
-               if(res > 0 )
+                res = _arreteRepo.Delete(id);
+                if (res > 0)
                 {
                     TempData["AlertMessage"] = "Suppréssion effectué avec succès.....";
                     return RedirectToAction("Index");
@@ -126,20 +124,19 @@ namespace GED_APP.Controllers
 
         }
         [NonAction]
-        public void OnloadCycle()
+        public void OnloadStructure()
         {
             //_httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
-            List<Cycle> listCycle = new List<Cycle>();
+            List<Structure> structures = new List<Structure>();
             if (ModelState.IsValid)
             {
-                listCycle = (List<Cycle>)_cycleRepo.GetAll();
-                if (listCycle != null)
+                structures = (List<Structure>)_structureRepo.GetAll();
+                if (structures != null)
                 {
-                    Cycle cycleDefault = new Cycle() { Id = 0, Code = "Choisir cycle" };
-                    listCycle.Insert(0, cycleDefault);
-                    ViewBag.Cycles = listCycle;
+                    Structure StructureDefault = new Structure() { Id = 0, Libele = "Choisir structure" };
+                    structures.Insert(0, StructureDefault);
+                    ViewBag.Structures = structures;
                 }
-
             }
         }
 
@@ -148,14 +145,14 @@ namespace GED_APP.Controllers
         {
             int res;
             //_httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
-            Doc ar = new Doc();
-            OnloadCycle();
+            Arrete ar = new Arrete();
+            OnloadStructure();
             ar = _arreteRepo.GetById(id);
             return View(ar);
         }
         [HttpPost, ActionName("AddPdf")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddPdf([Bind("Id, Source, Numero, DateSign, Objet, TypeDoc, AnneeAcademique, CycleId, Fichier, Signataire")] Doc a, IFormFile pdf)
+        public async Task<IActionResult> AddPdf([Bind("Id, Numero, DateSign, Objet, Origine, NumeroCNE, DateCne, StructureId, Status, Updated")] Arrete a, IFormFile pdf)
         {
             if (pdf != null)
             {
@@ -163,26 +160,27 @@ namespace GED_APP.Controllers
                 //_httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
                 if (ModelState.IsValid)
                 {
-                    OnloadCycle();
-                    a.Fichier = 1;
+                    Structure s = _structureRepo.GetByCode(a.Origine);
+                    a.StructureId = s.Id;
+                    a.Status = 1;
+                    a.Updated = DateTime.Now;
                     // copy fichier sur le serveur
-                    path = await _uploadService.UploadPdfFileArreteAsync(pdf, a);
-                    int res =_arreteRepo.Update(a);
-
-                    if ((res > 0) && (path != null))
+                    path = await _arreteRepo.UploadPdfFileArreteAsync(pdf, a);
+                    int resp = _arreteRepo.Update(a);
+                    if ((resp > 0) && (path != null))
                     {
-                        // copy fichier sur le serveur
-                        path = await _uploadService.UploadPdfFileArreteAsync(pdf, a);
-                        TempData["AlertMessage"] = "Document associé avec succès.....";
+                        TempData["AlertMessage"] = "Document added successfully.....";
                         return RedirectToAction("Index");
                     }
                     else
                     {
-                        a.Fichier = 0;
-                        res = _arreteRepo.Update(a);
+                        a.StructureId = s.Id;
+                        a.Status = 0;
+                        resp = _arreteRepo.Update(a);
                         TempData["AlertMessage"] = "Erreur ajout du document.....";
                         return RedirectToAction("Index");
                     }
+
                 }
                 return RedirectToAction("Index");
                 //return RedirectToAction("Details", new { d.Id });
@@ -192,16 +190,15 @@ namespace GED_APP.Controllers
         [HttpGet]
         public IActionResult showPdf(int id)
         {
-            //_httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
-            Doc aa = new Doc();
-            OnloadCycle();
-            aa=_arreteRepo.GetById(id);
-            if (aa!=null)
-            { 
-                string? num = "Arr_" + aa.Numero + "_Du " + aa.DateSign + "_Source" + aa.Source;
+            Arrete a = new Arrete();
+            a = _arreteRepo.GetById(id);
+            if (a != null)
+            {
+                string? num = "Arrete_" + a.Numero + "_du_" + a.DateSign + "_session_" + a.NumeroCNE;
                 var replacement = num.Replace('/', '_');
                 replacement = replacement.Replace(' ', '_');
-                var filePath = Path.Combine(_environment.ContentRootPath, "wwwroot/doc/pdf/arretes/", replacement + ".pdf");
+                // convert and copy
+                var filePath = Path.Combine(_environment.ContentRootPath, "wwwroot/doc/pdf/arretes", replacement + ".pdf");
                 WebClient client = new WebClient();
                 byte[] FileBuffer = client.DownloadData(filePath);
                 if (FileBuffer != null)
@@ -210,7 +207,8 @@ namespace GED_APP.Controllers
 
                 }
             }
-            return View(aa);
+
+            return View(a);
         }
     }
 }

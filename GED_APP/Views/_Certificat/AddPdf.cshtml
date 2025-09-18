@@ -1,0 +1,63 @@
+﻿@model GED_APP.Models._Certificat
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    // ViewData["Title"] = "Create";
+    ViewData["PageTitle"] = "Add certifcat pdf";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget p-4">
+            <form asp-action="AddPdf" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="Id" value="@Model.Id" />
+                <div class="row widget">
+                    <div class="col-md-12">
+                        <div class="mb-2">
+                            <div class='e-btn-group custom-rbt-group'>
+                                <input type="radio" id="radioT" name="Type" value="Travail" checked="@(Model.Type == "Travail")" />
+                                <label class="e-btn" for="radioT">Travail</label>
+                                <input type="radio" id="radioC" name="Type" value="Prise de service" checked="@(Model.Type == "Prise de service")" />
+                                <label class="e-btn" for="radioC">Prise de service</label>
+                                <input type="radio" id="radioE" name="Type" value="Autre" checked="@(Model.Type == "Autre")" />
+                                <label class="e-btn" for="radioE">Autre</label>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <ejs-textbox id="dest" placeholder="Beneficiaire" floatLabelType="Always" ejs-for="Destinataire"></ejs-textbox>
+                            <span asp-validation-for="Destinataire" class="text-danger"></span>
+                        </div>
+                        <div class="mb-2">
+
+                            <ejs-textbox id="num" placeholder="Numero" floatLabelType="Always" ejs-for="Numero"></ejs-textbox>
+                            <span asp-validation-for="Numero" class="text-danger"></span>
+                        </div>
+                        <div class="mb-2">
+                            <ejs-maskedtextbox mask="99-99-9999" id="annee" placeholder="Date signature" floatLabelType="Always" ejs-for="DateSign"></ejs-maskedtextbox>
+                            <span asp-validation-for="DateSign" class="text-danger"></span>
+                        </div>
+                        <div class="mb-2">
+                            <ejs-textbox id="sign" placeholder="Signataire" floatLabelType="Always" ejs-for="Signataire"></ejs-textbox>
+                            <span asp-validation-for="Signataire" class="text-danger"></span>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Uploaod pdf document</label>
+                            <input type="file" id="doc" name="pdf" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <ejs-button id="submit" cssClass="e-success align-center" type="submit" content="submit"></ejs-button>
+            </form>
+        </div>
+    </div>
+    @* <div class="col-md-3">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <div class="image" style="width:40px; height:50px;">
+            </div>
+            <i class="fa fa-user" fa-2xl aria-hidden="true"></i>
+        </div>
+
+    </div> *@
+
+</div>

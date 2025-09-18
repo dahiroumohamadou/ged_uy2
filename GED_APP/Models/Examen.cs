@@ -6,8 +6,8 @@ namespace GED_APP.Models
     public class Examen
     {
         public int Id { get; set; }
+        public string? Code { get; set; }   
         public string? Nom { get; set; }
-        public string? Session { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
         public ICollection<PvExamen>? Pvs { get; set; }

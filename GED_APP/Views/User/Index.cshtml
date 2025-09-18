@@ -33,7 +33,7 @@
     </div> *@
 }
 <div class="row ">
-    <div class="col-md-11 h-100 d-flex align-content-center justify-content-center">
+    <div class="col-md-12 h-100 d-flex align-content-center justify-content-center">
         <ejs-grid id="Grid"
                   dataSource="@ViewBag.DataSource"
                   gridLines="None"
@@ -43,6 +43,7 @@
             <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
             <e-grid-columns>
                 <e-grid-column field="rowIndex" headerText="N°" template="#rowIndexTemplate" textAlign="Center"></e-grid-column>
+                <e-grid-column field="Service" headerText="Service" template="#ServiceTemplate" textAlign="Center"></e-grid-column>
                 <e-grid-column field="UserName" headerText="User" textAlign="Center"></e-grid-column>
                 <e-grid-column field="UserEmail" headerText="Email" textAlign="Center"></e-grid-column>
                 <e-grid-column field="Role" headerText="Role" textAlign="Center"></e-grid-column>
@@ -50,11 +51,7 @@
             </e-grid-columns>
         </ejs-grid>
     </div>
-    <div class="col-md-3">
-        <div class="widget h-100 d-flex justify-content-center align-items-center">
-            <i class="fa fa-user" fa-2xl aria-hidden="true"></i>
-        </div>
-    </div>
+   
 </div>
 <script id="rowIndexTemplate" type="text/x-template">
     <div>${((+ data.index)+1)}</div>
@@ -74,6 +71,17 @@
             </button>
          </form>
     </div>
+</script>
+<script id="ServiceTemplate" type="text/x-template">
+    ${if(Service=="DCAA")}
+        <span class="badge bg-primary">${Service}</span>
+    ${else if(Service=="SDSAA")}
+        <span class="badge bg-success">${Service}</span>
+    ${else if(Service=="SDDA")}
+        <span class="badge bg-info">${Service}</span>
+    ${else}
+         <span class="badge bg-danger">${Service}</span>
+    ${/if}
 </script>
 
 @* <script id="photo" type="text/x-template">

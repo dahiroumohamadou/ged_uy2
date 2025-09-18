@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP\\GED_APP\\GED_APP.csproj": {}
+    "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP_UYII\\GED_APP\\GED_APP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP\\GED_APP\\GED_APP.csproj": {
+    "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP_UYII\\GED_APP\\GED_APP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP\\GED_APP\\GED_APP.csproj",
+        "projectUniqueName": "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP_UYII\\GED_APP\\GED_APP.csproj",
         "projectName": "GED_APP",
-        "projectPath": "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP\\GED_APP\\GED_APP.csproj",
+        "projectPath": "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP_UYII\\GED_APP\\GED_APP.csproj",
         "packagesPath": "C:\\Users\\MOHAMADOU\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP\\GED_APP\\obj\\",
+        "outputPath": "C:\\Users\\MOHAMADOU\\source\\repos\\GED_APP_UYII\\GED_APP\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

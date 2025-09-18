@@ -1,0 +1,74 @@
+﻿@model GED_APP.Models.Dossier
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    // ViewData["Title"] = "Create";
+    ViewData["PageTitle"] = "Add correspondance pdf";
+}
+<div class="row">
+    <div class="col-md-9">
+        <div class="widget p-4">
+            <form asp-action="AddPdf" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="Id" value="@Model.Id" />
+                <div class="row widget">
+                    <div class="col-md-12">
+                        <div class="mb-2">
+                            <div class='e-btn-group custom-rbt-group'>
+                                <input type="radio" id="radiodcaa" name="Origine" value="DCAA" checked="@(Model.Origine == "DCAA")" />
+                                <label class="e-btn" for="radiodcaa">DCAA</label>
+                                <input type="radio" id="radiosdsaa" name="Origine" value="SDSAA" checked="@(Model.Origine == "SDSAA")" />
+                                <label class="e-btn" for="radiosdsaa">SDSAA</label>
+                                <input type="radio" id="radiosdda" name="Origine" value="SDDA" checked="@(Model.Origine == "SDDA")" />
+                                <label class="e-btn" for="radiosdda">SDDA</label>
+                                <input type="radio" id="radiosde" name="Origine" value="SDE" checked="@(Model.Origine == "SDE")" />
+                                <label class="e-btn" for="radiosde">SDE</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <ejs-textbox id="num" placeholder="Numero" floatLabelType="Always" ejs-for="Numero"></ejs-textbox>
+                            <span asp-validation-for="Numero" class="text-danger"></span>
+                        </div>
+                        <div class="mb-2">
+                            <ejs-textbox id="objet" multiline="true" placeholder="Objet" floatLabelType="Always" ejs-for="Objet"></ejs-textbox>
+                            <span asp-validation-for="Objet" class="text-danger"></span>
+                        </div>
+                        <div class="mb-2">
+                            <ejs-maskedtextbox mask="99-99-9999" id="dateEntr" placeholder="Date entrée" floatLabelType="Always" ejs-for="DateEntree"></ejs-maskedtextbox>
+                            <span asp-validation-for="DateEntree" class="text-danger"></span>
+                        </div>
+                        <div class="mb-2">
+                            <ejs-maskedtextbox mask="99-99-9999" id="dateSortie" placeholder="Date sortie" floatLabelType="Always" ejs-for="DateSortie"></ejs-maskedtextbox>
+                            <span asp-validation-for="DateSortie" class="text-danger"></span>
+                        </div>
+                        <div class="mb-2">
+                            <ejs-textbox id="demandeur" placeholder="Demandeur" floatLabelType="Always" ejs-for="Demandeur"></ejs-textbox>
+                            <span asp-validation-for="Demandeur" class="text-danger"></span>
+                        </div>
+                        <div class="mb-2">
+                            <ejs-textbox id="persT" placeholder="Personne ayant traité" floatLabelType="Always" ejs-for="PersonneTraite"></ejs-textbox>
+                            <span asp-validation-for="PersonneTraite" class="text-danger"></span>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Uploaod pdf document</label>
+                            <input type="file" id="doc" name="pdf" class="form-control" />
+                        </div>
+                    </div>
+
+                </div>
+                <ejs-button id="submit" cssClass="e-success align-center" type="submit" content="submit"></ejs-button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <div class="image" style="width:40px; height:50px;">
+            </div>
+            <i class="fa fa-user" fa-2xl aria-hidden="true"></i>
+        </div>
+
+    </div>
+
+</div>

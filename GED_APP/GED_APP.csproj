@@ -56,18 +56,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\Arrete\AddOrEdit.cshtml">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="Views\Arrete\AddPdf.cshtml">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="Views\Arrete\Index.cshtml">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
     <Content Update="Views\Autre\AddOrEdit.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -407,7 +395,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Account\" />
+    <Folder Include="wwwroot\archives codes\" />
     <Folder Include="wwwroot\doc\pdf\communiques\" />
+    <Folder Include="wwwroot\doc\pdf\chronos\" />
+    <Folder Include="wwwroot\doc\pdf\corresp\" />
+    <Folder Include="wwwroot\doc\pdf\dossiers\" />
+    <Folder Include="wwwroot\doc\pdf\Listes\" />
+    <Folder Include="wwwroot\doc\pdf\decharges\" />
+    <Folder Include="wwwroot\doc\pdf\contrat\" />
+    <Folder Include="wwwroot\doc\pdf\attestations\" />
+    <Folder Include="wwwroot\doc\pdf\decrets\" />
+    <Folder Include="wwwroot\doc\pdf\etatPaiements\" />
+    <Folder Include="wwwroot\doc\pdf\certificats\" />
+    <Folder Include="wwwroot\doc\pdf\decision\" />
+    <Folder Include="wwwroot\doc\pdf\noteServices\" />
+    <Folder Include="wwwroot\doc\pdf\PvCne\" />
+    <Folder Include="wwwroot\doc\pdf\PvExamens\" />
+    <Folder Include="wwwroot\doc\pdf\rapports\" />
   </ItemGroup>
 
 </Project>

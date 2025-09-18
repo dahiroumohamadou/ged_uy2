@@ -2,6 +2,7 @@
 using GED_APP.Repository.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Security.Claims;
@@ -10,6 +11,7 @@ using System.Text;
 
 namespace GED_APP.Controllers
 {
+   
     public class UserController : Controller
     {
         private readonly IUser _userRepo;
@@ -19,6 +21,7 @@ namespace GED_APP.Controllers
             _userRepo = userRepo;
         }
         [HttpGet]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Index()
         {
             ICollection<User> users = null;
@@ -35,9 +38,11 @@ namespace GED_APP.Controllers
             return View(users);
         }
         [HttpGet]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult AddOrEdit(int id = 0)
         {
             User u = new User();
+            OnloadServices();
             if (id == 0)
             {
                 return View(new User());
@@ -52,11 +57,12 @@ namespace GED_APP.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddOrEdit([Bind("Id, UserName, UserEmail, Role, Password, saltPassword, Token,  KeepLoginIn")] User usr)
+        public IActionResult AddOrEdit([Bind("Id, UserName, UserEmail, Service, Role, Password, saltPassword, Token,  KeepLoginIn")] User usr)
         {
             int res;
             if (ModelState.IsValid)
             {
+                OnloadServices();
                 if (usr.Id == 0)
                 {
                     res=_userRepo.Add(usr);
@@ -139,11 +145,17 @@ namespace GED_APP.Controllers
                     else
                     {
                         ViewBag.user = "";
+                        TempData["User"] = "";
                         TempData["AlertMessage"] = "Login or password incorrect.....";
                         return View();
                     }
                 }
             }
+            return View();
+        }
+        [Authorize]
+        public IActionResult AccesDenied()
+        {
             return View();
         }
         private bool verifHashPassword(string enterPass, string storePass, string storeSalt)
@@ -173,6 +185,34 @@ namespace GED_APP.Controllers
                 IsPersistent = true,
             };
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authentificationProperties);
+        }
+        [NonAction]
+        public void OnloadServices()
+        {
+            //_httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
+            List<string> services = new List<string>();
+            if (ModelState.IsValid)
+            {
+                services.Insert(0, "Choisir le service");
+                services.Insert(1, "CABNIET");
+                services.Insert(2, "COURRIER");
+                ViewBag.Services = services;
+            }
+        }
+    
+     [NonAction]
+        public void OnloadTypes()
+        {
+            //_httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
+            List<string> types = new List<string>();
+            if (ModelState.IsValid)
+            {
+                types.Insert(0, "Choisir le type");
+                types.Insert(1, "OPERATEUR");
+                types.Insert(2, "CHEF SERVICE COURRIER");
+                types.Insert(2, "ADMIN");
+                ViewBag.Types = types;
+            }
         }
     }
 }

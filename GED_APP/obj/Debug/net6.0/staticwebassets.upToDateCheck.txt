@@ -1,17 +1,41 @@
 wwwroot\css\site.css
 wwwroot\css\style.css
 wwwroot\css\tailwind.css
+wwwroot\doc\pdf\arretes\001__01-09-2025_Arrete_A_001.pdf
 wwwroot\doc\pdf\arretes\Arr_ Du .pdf
 wwwroot\doc\pdf\arretes\Arr_0006_D_MINFOF_SETAT_SG_DAG_SDPSP_Du_22_22_2222_SourceENS-YDE.pdf
+wwwroot\doc\pdf\attestations\001_APE_01-09-2025_A.P.E_to_BENEFICAIRE_APE_001.pdf
 wwwroot\doc\pdf\autres\Autre__Du .pdf
+wwwroot\doc\pdf\certificats\001_PS_Prise_de_service_01-09-2025_To_BENEFICAIRE_PS_001.pdf
+wwwroot\doc\pdf\chronos\Chrono_115_DCAA_2025.pdf
+wwwroot\doc\pdf\chronos\Chrono_119_DCAA_2025.pdf
+wwwroot\doc\pdf\chronos\Chrono___.pdf
+wwwroot\doc\pdf\communiques\001_CM_01-09-2025_COMMUNIQUE_A_001.pdf
 wwwroot\doc\pdf\communiques\CRP_0006_D_MINFOF_SETAT_SG_DAG_SDPSP_Du 11_11_1111_Ses202-3222_AnneeAcad2000_0000_cycl_sourceENS-YDE.pdf
 wwwroot\doc\pdf\communiques\CRP_0006_D_MINFOF_SETAT_SG_DAG_SDPSP_Du 12_01_2023_Ses202-3222_AnneeAcad2000_0000_cycl_sourceENS-YDE.pdf
 wwwroot\doc\pdf\communiques\CRP_22_00680_MINESUP__Du 01_01_2020_Sesjul-2023_AnneeAcad2022_2023_cycl_sourceENS-BAMBILI.pdf
 wwwroot\doc\pdf\communiques\CRP_24_00680_MINESUP__Du 11_11_2020_Sesmai-2023_AnneeAcad2022_2023_cycl_sourceENS-BAMBILI.pdf
 wwwroot\doc\pdf\communiques\CRP_500_Du_11_10_2011_Sesjan-2020_AnneeAcad2022_2022_cycl_sourceENS-YDE.pdf
 wwwroot\doc\pdf\communiques\CRP_555_Du_11_10_2011_Sesjan-2020_AnneeAcad2022_2022_cycl_sourceENS-YDE.pdf
+wwwroot\doc\pdf\contrat\001_CT_Travail_01-09-2025_To_Beneficiaire_001_CT.pdf
+wwwroot\doc\pdf\contrat\002_CT_Travail_01-08-2025_To_Beneficiaire_002_CT.pdf
+wwwroot\doc\pdf\corresp\0004_10-09-2025_MR_LE_RECTEUR_To_MINESUP.pdf
+wwwroot\doc\pdf\corresp\001_01-09-2025_Emetteur_001_To_Recepteur_001.pdf
+wwwroot\doc\pdf\corresp\COR01_12-09-2025_UNIVIERSTITE_YAOUNDE_II_To_MINESUP.pdf
+wwwroot\doc\pdf\corresp\Lettre_004_07-07-2025_CONVOCATION_AU_SEMINAIRE_DE_FORMATION_To_DCAA.pdf
+wwwroot\doc\pdf\corresp\Reunion_002_16-06-2025_Reunion_01_To_SDE.pdf
+wwwroot\doc\pdf\decharges\SDE_Du_28-05-2025_DECHARGE_EQUIVALENCE.pdf
+wwwroot\doc\pdf\decision\001_DB_Deblocage_01-09-2025_Liste_deblocage_001.pdf
+wwwroot\doc\pdf\decrets\001_01-09-2025_DECRET_A_001.pdf
+wwwroot\doc\pdf\dossiers\001_dossier_01_19-06-2025__DCAA.pdf
+wwwroot\doc\pdf\dossiers\001_dossier_2_19-06-2025_demandeur_2_SDE.pdf
+wwwroot\doc\pdf\etatPaiements\001_01-09-2025_ETAT_PAIEMENT_001.pdf
+wwwroot\doc\pdf\noteServices\001_01-09-2025_NOTE_DE_SERVICE_A_001.pdf
+wwwroot\doc\pdf\pvs\Pv_116_A2025_SAVRL-2025_C1_F2_Source_ENS-YDE.pdf
+wwwroot\doc\pdf\pvs\Pv_117e_A2025_SAVRL-2025_C1_F2_Source_ENS-YDE.pdf
 wwwroot\doc\pdf\pvs\Pv_54_A2024_SAVRIL_2024_C1_F4_Source_ENS-YDE.pdf
 wwwroot\doc\pdf\pvs\Pv_70_A2023_SJUIL-2023_C3_F3_Source_ENS-YDE.pdf
+wwwroot\doc\pdf\rapports\Rapport_DCAA_18-06-2025_Au_20-06-2025.pdf
 wwwroot\favicon.ico
 wwwroot\img\images\bank1.png
 wwwroot\img\images\bank2.png
@@ -21,11 +45,16 @@ wwwroot\img\images\carte\recto0.png
 wwwroot\img\images\carte\recto2.png
 wwwroot\img\images\carte\verso.png
 wwwroot\img\images\demande.png
+wwwroot\img\images\font\content.PNG
+wwwroot\img\images\font\fontConx.png
+wwwroot\img\images\font\fontEcran.png
 wwwroot\img\images\list.png
 wwwroot\img\images\logo.jpg
 wwwroot\img\images\logo.png
 wwwroot\img\images\logo0.png
 wwwroot\img\images\logo1.png
+wwwroot\img\images\logoMinesup.png
+wwwroot\img\images\logo_uy2.png
 wwwroot\img\images\user.png
 wwwroot\img\photos\41Y.png
 wwwroot\img\photos\M104234.png
@@ -88,4 +117,3 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\doc\pdf\pvs\Pv_117e_A2025_SAVRL-2025_C1_F2_Source_ENS-YDE.pdf

@@ -112,6 +112,14 @@
 
     </div>
 </script>
+<script id="StatusTemplate" type="text/x-template">
+    ${if(Status=="1")}
+        <span class="badge bg-primary">Oui</span>
+
+    ${else}
+         <span class="badge bg-danger">Non</span>
+    ${/if}
+</script>
 <script >
     function rowSelected(args) {
         alert("row index : " + args.row.getAttribute('aria-rowindex'));

@@ -1,0 +1,96 @@
+﻿@model IEnumerable<GED_APP.Models.Filieree>
+@{
+    // ViewData["Title"] = "List of structure";
+    ViewData["PageTitle"] = "Liste des filières";
+    ViewData["PageActionText"] = "+ New filiere";
+    ViewData["PageActionUrl"] = "/Filieree/AddOrEdit";
+}
+
+
+@* <p class="text-purple-700 text-opacity-100 ...">The quick brown fox ...</p>
+<p class="text-purple-700 text-opacity-75 ...">The quick brown fox ...</p>
+<p class="text-purple-700 text-opacity-50 ...">The quick brown fox ...</p>
+<p class="text-purple-700 text-opacity-25 ...">The quick brown fox ...</p>
+<p class="text-purple-700 text-opacity-0 ...">The quick brown fox ...</p> *@
+@if (@TempData["AlertMessage"] != null)
+{
+
+    <script src="/lib/jquery//dist/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+        @*  swal("Infos : ", '@TempData["AlertMessage"]', "success");*@
+                swal("Infos : ", '@TempData["AlertMessage"]', "info");
+        @*  swal("Infos : ", '@TempData["AlertMessage"]', "warning"); *@
+                };
+    </script>
+    @* <div class="alert alert-success">
+        @TempData["AlertMessage"]
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+    </div> *@
+}
+<div class="row ">
+    <div class="col-md-11 h-100 d-flex align-content-center justify-content-center">
+        <ejs-grid id="Grid"
+                  dataSource="@ViewBag.DataSource"
+                  gridLines="None"
+                  allowSorting="true"
+                  allowPaging="true"
+                  toolbar="@(new List<string>() {"Search" })"
+                  gridlines="None">
+            <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
+            <e-grid-columns>
+                <e-grid-column field="rowIndex" headerText="N°" template="#rowIndexTemplate" textAlign="Center"></e-grid-column>
+                <e-grid-column field="Code" headerText="Code" textAlign="Center"></e-grid-column>
+                <e-grid-column field="Description" headerText="Libele" textAlign="Center"></e-grid-column>
+                <e-grid-column headerText="Actions" template="#actionColumTemplate" textAlign="Center"> </e-grid-column>
+            </e-grid-columns>
+        </ejs-grid>
+    </div>
+    <div class="col-md-3">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa fa-user" fa-2xl aria-hidden="true"></i>
+        </div>
+    </div>
+</div>
+<script id="rowIndexTemplate" type="text/x-template">
+    <div>${((+ data.index)+1)}</div>
+</script>
+<script id="actionColumTemplate" style="width:50px;" type="text/x-template">
+    <div class="d-flex flex-row g-5 justify-content-center">
+        <a class="btn btn-sm no-a-decoration btn-primary" href="/Filieree/AddOrEdit/${Id}" >
+            <i class="fa-solid fa-pen fa-lg "></i>
+         </a>|
+         <a class="btn btn-sm no-a-decoration btn-outline-success" href="/Filieree/AddOrEdit/${Id}" >
+            <i class="fa-solid fa-eye fa-lg"></i>
+         </a> |
+         <form action="/Filieree/Delete/${Id}" method="post">
+             <button type="submit" class="btn btn-sm btn-link btn-danger no-a-decoration"
+             onclick="return confirm(&quot;sure to delete this record (${Id}) &quot;) ">
+                <i class="fa-solid fa-trash fa-lg"></i>
+            </button>
+         </form>
+    </div>
+</script>
+<@* script id="CategorieColumTemplate" type="text/x-template">
+    ${if(Libele=="DIRECTEUR")}
+        <span class="badge bg-primary">${Libele}</span>
+    ${else}
+        <span class="badge bg-danger">${Libele}</span>
+    ${/if}
+</script> *@
+
+@* <script id="sexeColumTemplate" type="text/x-template">
+    ${if(Sexe=="M")}
+        <span class="badge bg-primary">${Sexe}</span>
+    ${else}
+        <span class="badge bg-danger">${Sexe}</span>
+    ${/if}
+</script> *@
+@* <script id="photo" type="text/x-template">
+    <div class="image">
+        <img src="/img/photos/${Matricule}.png" alt="${Matricule}"/>
+    </div>
+</script> *@

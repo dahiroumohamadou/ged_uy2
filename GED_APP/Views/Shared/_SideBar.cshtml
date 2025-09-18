@@ -20,18 +20,81 @@
     });
     menuItems.Add(new
     {
-        text = "Pvs",
-        url = "/Pv",
-        iconCss="fa-solid fa-folder-open"
+        text = "Correspondances",
+        url = "/_Correspondance",
+        iconCss = "fa-solid fa-envelope-open"
+
+    });
+    menuItems.Add(new
+    {
+        text = "Contrats",
+        url = "/_Contrat",
+        iconCss = "fa-solid fa-calendar-check"
+
+    });
+    menuItems.Add(new
+    {
+        text = "Decisions",
+        url = "/_Decision",
+        iconCss = "fa-solid fa-pencil-square"
+
+    });
+    
+    menuItems.Add(new
+    {
+        text = "Communiqués",
+        url = "/_Communique",
+        iconCss = "fa-solid fa-folder-open"
 
     });
     menuItems.Add(new
     {
         text = "Arrêtes",
-        url = "/Arrete",
+        url = "/_Arrete",
+        iconCss = "fa-solid fa-newspaper"
+
+    });
+    menuItems.Add(new
+    {
+        text = "Attestations",
+        url = "/_Attestation",
         iconCss = "fa-solid fa-list"
 
     });
+    menuItems.Add(new
+    {
+        text = "Decrets",
+        url = "/_Decret",
+        iconCss = "fa-solid fa-book"
+
+    });
+    menuItems.Add(new
+    {
+        text = "Autres",
+        separator = true,
+
+    });
+    menuItems.Add(new
+    {
+        text = "Etats de paiement",
+        url = "/_EtatPaiement",
+        iconCss = "fa-solid fa-university"
+    });
+    menuItems.Add(new
+    {
+        text = "Certificats",
+        url = "/_Certificat",
+        iconCss = "fa-solid fa-sticky-note"
+
+    });
+    menuItems.Add(new
+    {
+        text = "Note de service",
+        url = "/_NoteService",
+        iconCss = "fa-solid fa-ticket"
+    });
+   /* 
+    
     menuItems.Add(new
     {
         text = "Com. / Dec.",
@@ -45,7 +108,7 @@
         url = "/Autre",
         iconCss = "fa fa-book"
 
-    });
+     });*/
     menuItems.Add(new
     {
         text = "Extras",
@@ -56,7 +119,7 @@
     {
         text = "Reports",
         url = "/Report",
-        iconCss = "fa-solid fa-folder-closed"
+        iconCss = "fa-solid fa-file-pdf"
 
     });
     menuItems.Add(new
@@ -72,18 +135,7 @@
         separator = true,
 
     });
-    menuItems.Add(new
-    {
-        text = "Parcours",
-        url = "/Cycle",
-        iconCss = "fa-solid fa-graduation-cap"
-    });
-    menuItems.Add(new
-    {
-        text = "Filières",
-        url = "/Filiere",
-        iconCss = "fa-solid fa-external-link" 
-    });
+   
     menuItems.Add(new
     {
         text = "Users",
@@ -105,8 +157,8 @@
         <div class="profile-wraper">
                     <img class="profile-pic" src="~/img/images/logo.jpg" title="profile" />
                     <div class="titles d-flex flex-column ps-3">
-                        <h3 class="mb-0">GED</h3>
-                        <h5><span class="text-muted">Ens-Yde</span></h5>
+                        <h3 class="mb-0">UY II</h3>
+                        <h5><span class="text-muted">FilesStore</span></h5>
                         <h5>@TempData.Peek("User")</h5>    
                     </div>
         </div>
