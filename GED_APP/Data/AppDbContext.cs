@@ -11,15 +11,35 @@ namespace GED_APP.Data
         {
             
         }
+        // old
         public DbSet<User> Users { get; set; }
         public DbSet<Cycle> Cycles { get; set; }
         public DbSet<Doc> Docs { get; set; }
         public DbSet<Filiere> Filieres { get; set; }
+
+        // new
+        public DbSet<Arrete> Arretes { get; set; }
+        public DbSet<Chronogramme> Chronogrammes { get; set; }
+        public DbSet<CNE> CNEs { get; set; }
+        public DbSet<Correspondance> Correspondances { get; set; }
+        public DbSet<Dossier> Dossiers { get; set; }
+        public DbSet<Examen> Examens { get; set; }
+        public DbSet<Faculte> Facultes { get; set; }
+        public DbSet<Filieree> Filierees { get; set; }
+        public DbSet<Liste> Listes { get; set; }
+        public DbSet<PvCNE> PvCNEs { get; set; }
+        public DbSet<PvExamen> PvExamens { get; set; }
+        public DbSet<Rapport> Rapports { get; set; }
+        public DbSet<Source> Sources { get; set; }
+        public DbSet<Structure> Structures { get; set; }
+        public DbSet<TypeCorresp> TypeCorresps { get; set; }
+
        
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // old
             modelBuilder.Entity<Doc>(entity =>
             {
                 entity.HasKey(d => d.Id);
@@ -78,7 +98,68 @@ namespace GED_APP.Data
                 entity.Property(u => u.Token);
                 entity.Property(u => u.KeepLoginIn);
             });
-            
+            // new
+            modelBuilder.Entity<Arrete>(entity =>
+            {
+
+            });
+            modelBuilder.Entity<Chronogramme>(entity =>
+            {
+
+            });
+            modelBuilder.Entity<CNE>(entity =>
+            {
+
+            });
+            modelBuilder.Entity<Correspondance>(entity =>
+            {
+
+            });
+            modelBuilder.Entity<Dossier>(entity =>
+            {
+
+            });
+            modelBuilder.Entity<Examen>(entity =>
+            {
+
+            });
+            modelBuilder.Entity<Faculte>(entity =>
+            {
+
+            });
+            modelBuilder.Entity<Filieree>(entity =>
+            {
+
+            });
+            modelBuilder.Entity<Liste>(entity =>
+            {
+
+            });
+            modelBuilder.Entity<PvCNE>(entity =>
+            {
+
+            });
+            modelBuilder.Entity<PvExamen>(entity =>
+            {
+
+            });
+            modelBuilder.Entity<Rapport>(entity =>
+            {
+
+            });
+            modelBuilder.Entity<Source>(entity =>
+            {
+
+            });
+            modelBuilder.Entity<Structure>(entity =>
+            {
+
+            });
+            modelBuilder.Entity<TypeCorresp>(entity =>
+            {
+
+            });
+
         }
     }
 }

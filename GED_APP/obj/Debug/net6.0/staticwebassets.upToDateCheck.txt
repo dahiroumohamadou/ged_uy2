@@ -88,3 +88,4 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\doc\pdf\pvs\Pv_117e_A2025_SAVRL-2025_C1_F2_Source_ENS-YDE.pdf

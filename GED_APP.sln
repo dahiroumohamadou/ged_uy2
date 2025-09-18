@@ -5,9 +5,10 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GED_APP", "GED_APP\GED_APP.csproj", "{53124F28-1FBA-4241-83DA-043ECD4FF7E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "backend", "..\GED\backend\backend.csproj", "{5B3E1E78-5354-403C-B34D-FF8271B578DF}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ged", "..\GED\soft\ged.csproj", "{34523B99-38E7-42A1-B32F-C61CF37F94F1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{9C8CB701-102D-CF49-A3E0-89AC09D42C2C}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +20,6 @@ Global
 		{53124F28-1FBA-4241-83DA-043ECD4FF7E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53124F28-1FBA-4241-83DA-043ECD4FF7E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53124F28-1FBA-4241-83DA-043ECD4FF7E8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5B3E1E78-5354-403C-B34D-FF8271B578DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5B3E1E78-5354-403C-B34D-FF8271B578DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5B3E1E78-5354-403C-B34D-FF8271B578DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5B3E1E78-5354-403C-B34D-FF8271B578DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{34523B99-38E7-42A1-B32F-C61CF37F94F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34523B99-38E7-42A1-B32F-C61CF37F94F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34523B99-38E7-42A1-B32F-C61CF37F94F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34523B99-38E7-42A1-B32F-C61CF37F94F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

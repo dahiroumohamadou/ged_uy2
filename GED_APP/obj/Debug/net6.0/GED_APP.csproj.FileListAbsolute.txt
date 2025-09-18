@@ -589,3 +589,4 @@ C:\Users\MOHAMADOU\source\repos\GED_APP\GED_APP\obj\Debug\net6.0\refint\GED_APP.
 C:\Users\MOHAMADOU\source\repos\GED_APP\GED_APP\obj\Debug\net6.0\GED_APP.pdb
 C:\Users\MOHAMADOU\source\repos\GED_APP\GED_APP\obj\Debug\net6.0\GED_APP.genruntimeconfig.cache
 C:\Users\MOHAMADOU\source\repos\GED_APP\GED_APP\obj\Debug\net6.0\ref\GED_APP.dll
+C:\Users\MOHAMADOU\source\repos\GED_APP\GED_APP\obj\Debug\net6.0\GED_APP.sourcelink.json
