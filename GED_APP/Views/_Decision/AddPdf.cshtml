@@ -19,6 +19,10 @@
                                 <e-dropdownlist-fields value="Type" text="Type"></e-dropdownlist-fields>
                             </ejs-dropdownlist>
                         </div>
+                         <div class="mb-2">
+                            <ejs-textbox id="code" placeholder="Code physique" floatLabelType="Always" ejs-for="Code"></ejs-textbox>
+                            <span asp-validation-for="Code" class="text-danger"></span>
+                        </div
                         <div class="mb-2">
                             <ejs-textbox id="obket" multiline="true" placeholder="Objet" floatLabelType="Always" ejs-for="Objet"></ejs-textbox>
                             <span asp-validation-for="Objet" class="text-danger"></span>

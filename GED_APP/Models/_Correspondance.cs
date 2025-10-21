@@ -3,6 +3,7 @@
     public class _Correspondance
     {
         public int Id { get; set; }
+        public string? Code { get; set; }
         public string? Reference { get; set; }
         public string? Objet { get; set; }
         public string? Emetteur { get; set; }

@@ -14,6 +14,10 @@
                 <input type="hidden" name="Id" value="@Model.Id" />
                 <div class="row widget">
                     <div class="col-md-12">
+                         <div class="mb-2">
+                            <ejs-textbox id="code" placeholder="Code physique" floatLabelType="Always" ejs-for="Code"></ejs-textbox>
+                            <span asp-validation-for="Code" class="text-danger"></span>
+                        </div
                         <div class="mb-2">
                             <ejs-textbox id="objet" multiline="true" placeholder="Objet" floatLabelType="Always" ejs-for="Objet"></ejs-textbox>
                             <span asp-validation-for="Objet" class="text-danger"></span>

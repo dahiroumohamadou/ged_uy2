@@ -18,7 +18,7 @@ namespace GED_APP.Repository.Implementations
         {
             int res = -1;
             var nnn = _context._NoteServices
-                .Where(nn => nn.Numero == n.Numero && nn.DateSign == n.DateSign)
+                .Where(nn => nn.Numero == n.Numero && nn.Code==n.Code && nn.DateSign == n.DateSign)
                 .FirstOrDefault() ?? null;
             if (nnn == null)
             {
@@ -57,7 +57,7 @@ namespace GED_APP.Repository.Implementations
         {
             int res = -1;
             var c = _context._NoteServices
-              .Where(aa => aa.Numero == n.Numero && aa.DateSign == n.DateSign && aa.Signataire == n.Signataire)
+              .Where(aa => aa.Numero == n.Numero && aa.Code ==n.Code && aa.DateSign == n.DateSign && aa.Signataire == n.Signataire)
                 .FirstOrDefault() ?? null;
             if (c != null)
             {
@@ -98,6 +98,7 @@ namespace GED_APP.Repository.Implementations
                .FirstOrDefault() ?? null;
             if (n!= null)
             {
+                n.Code = nn.Code;
                 n.Numero = nn.Numero;
                 n.DateSign = nn.DateSign;
                 n.Status = nn.Status;

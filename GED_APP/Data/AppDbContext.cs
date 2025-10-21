@@ -49,6 +49,7 @@ namespace GED_APP.Data
             modelBuilder.Entity<_Arrete>(entity =>
             {
                 entity.HasKey(a => a.Id);
+                entity.Property(a => a.Code);
                 entity.Property(a => a.Numero);
                 entity.Property(a=> a.Objet);
                 entity.Property(a => a.Signataire);
@@ -60,6 +61,7 @@ namespace GED_APP.Data
             modelBuilder.Entity<_Attestation>(entity =>
             {
                 entity.HasKey(a => a.Id);
+                entity.Property(a => a.Code);
                 entity.Property(a => a.Numero);
                 entity.Property(a => a.Type);
                 entity.Property(a => a.Destinataire);
@@ -73,6 +75,7 @@ namespace GED_APP.Data
             modelBuilder.Entity<_Certificat>(entity =>
             {
                 entity.HasKey(c => c.Id);
+                entity.Property(c => c.Code);
                 entity.Property(c => c.Numero);
                 entity.Property(c => c.Type);
                 entity.Property(c => c.Destinataire);
@@ -86,6 +89,7 @@ namespace GED_APP.Data
             modelBuilder.Entity<_Communique>(entity =>
             {
                 entity.HasKey(c => c.Id);
+                entity.Property(c => c.Code);
                 entity.Property(c => c.Numero);
                 entity.Property(c => c.Objet);
                 entity.Property(c => c.Signataire);
@@ -98,6 +102,7 @@ namespace GED_APP.Data
             modelBuilder.Entity<_Contrat>(entity =>
             {
                 entity.HasKey(c => c.Id);
+                entity.Property(c => c.Code);
                 entity.Property(c => c.Numero);
                 entity.Property(c => c.Type);
                 entity.Property(c => c.Beneficiaire);
@@ -111,6 +116,7 @@ namespace GED_APP.Data
             modelBuilder.Entity<_Correspondance>(entity =>
             {
                 entity.HasKey(c => c.Id);
+                entity.Property(c => c.Code);
                 entity.Property(c => c.Reference);
                 entity.Property(c => c.Objet);
                 entity.Property(c => c.Emetteur);
@@ -125,6 +131,7 @@ namespace GED_APP.Data
             modelBuilder.Entity<_Decision>(entity =>
             {
                 entity.HasKey(d => d.Id);
+                entity.Property(d => d.Code);
                 entity.Property(d => d.Type);
                 entity.Property(d => d.Objet);
                 entity.Property(d => d.Signataire);
@@ -137,6 +144,7 @@ namespace GED_APP.Data
             modelBuilder.Entity<_Decret>(entity =>
             {
                 entity.HasKey(d => d.Id);
+                entity.Property(d => d.Code);
                 entity.Property(d => d.Numero);
                 entity.Property(d=>d.Objet);
                 entity.Property(d => d.Signataire);
@@ -149,6 +157,7 @@ namespace GED_APP.Data
             modelBuilder.Entity<_EtatPaiement>(entity =>
             {
                 entity.HasKey(e => e.Id);
+                entity.Property(e => e.Code);
                 entity.Property(e => e.Numero);
                 entity.Property(e=>e.Objet);
                 entity.Property(e => e.Signataire);
@@ -161,6 +170,7 @@ namespace GED_APP.Data
             modelBuilder.Entity<_NoteService>(entity =>
             {
                 entity.HasKey(n => n.Id);
+                entity.Property(n => n.Code);
                 entity.Property(n => n.Numero);
                 entity.Property(n=>n.Objet);
                 entity.Property(n => n.Signataire);

@@ -18,7 +18,7 @@ namespace GED_APP.Repository.Implementations
         {
             int res = -1;
             var aaa = _context._Arretes
-                .Where(aa => aa.Numero == a.Numero && aa.DateSign == a.DateSign && aa.Signataire==a.Signataire)
+                .Where(aa => aa.Numero == a.Numero && aa.DateSign == a.DateSign && aa.Code==a.Code && aa.Signataire==a.Signataire)
                 .FirstOrDefault() ?? null;
             if (aaa == null)
             {
@@ -57,7 +57,7 @@ namespace GED_APP.Repository.Implementations
         {
             int res = -1;
             var c = _context._Arretes
-              .Where(aa => aa.Numero == a.Numero && aa.DateSign == a.DateSign && aa.Signataire == a.Signataire)
+               .Where(aa => aa.Numero == a.Numero && aa.DateSign == a.DateSign && aa.Code == a.Code && aa.Signataire == a.Signataire)
                 .FirstOrDefault() ?? null;
             if (c != null)
             {
@@ -98,6 +98,7 @@ namespace GED_APP.Repository.Implementations
                .FirstOrDefault() ?? null;
             if (a != null)
             {
+                a.Code = aa.Code;
                 a.Numero = aa.Numero;
                 a.DateSign = aa.DateSign;
                 a.Status = aa.Status;

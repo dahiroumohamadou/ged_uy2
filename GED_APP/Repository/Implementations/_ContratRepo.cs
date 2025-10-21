@@ -18,7 +18,7 @@ namespace GED_APP.Repository.Implementations
         {
             int res = -1;
             var cor = _context._Contrats
-                .Where(cc => cc.Numero == c.Numero && cc.Type==c.Type && cc.DateSign == c.DateSign)
+                .Where(cc => cc.Numero == c.Numero && cc.Code==c.Code && cc.Type==c.Type && cc.DateSign == c.DateSign)
                 .FirstOrDefault() ?? null;
             if (cor == null)
             {
@@ -57,7 +57,7 @@ namespace GED_APP.Repository.Implementations
         {
             int res = -1;
             var c = _context._Contrats
-                .Where(cc => cc.Numero == co.Numero && cc.Type == co.Type && cc.DateSign == co.DateSign)
+                .Where(cc => cc.Numero == co.Numero && cc.Code == co.Code && cc.Type == co.Type && cc.DateSign == co.DateSign)
                 .FirstOrDefault() ?? null;
             if (c != null)
             {
@@ -99,6 +99,7 @@ namespace GED_APP.Repository.Implementations
             if (c != null)
             {
                 c.Numero = cr.Numero;
+                c.Code=cr.Code;
                 c.DateSign = cr.DateSign;
                 c.Type = cr.Type;
                 c.Status = cr.Status;

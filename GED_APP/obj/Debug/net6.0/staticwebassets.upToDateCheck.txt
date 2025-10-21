@@ -1,6 +1,7 @@
 wwwroot\css\site.css
 wwwroot\css\site1.css
 wwwroot\css\style1.css
+wwwroot\css\styles.css
 wwwroot\doc\pdf\arretes\001__01-09-2025_Arrete_A_001.pdf
 wwwroot\doc\pdf\arretes\Arr_ Du .pdf
 wwwroot\doc\pdf\arretes\Arr_0006_D_MINFOF_SETAT_SG_DAG_SDPSP_Du_22_22_2222_SourceENS-YDE.pdf
@@ -117,4 +118,3 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\css\styles.css

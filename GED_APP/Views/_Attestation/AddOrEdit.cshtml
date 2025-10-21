@@ -22,6 +22,10 @@
                             <input type="radio" id="radioE" name="Type" value="Autre" checked="@(Model.Type == "Autre")" />
                             <label class="e-btn" for="radioE">Autre</label>
                         </div>
+                         <div class="mb-2">
+                            <ejs-textbox id="code" placeholder="Code physique" floatLabelType="Always" ejs-for="Code"></ejs-textbox>
+                            <span asp-validation-for="Code" class="text-danger"></span>
+                        </div
                         <div class="mb-2">
                             <ejs-textbox id="dest"  placeholder="Beneficiaire" floatLabelType="Always" ejs-for="Destinataire"></ejs-textbox>
                             <span asp-validation-for="Destinataire" class="text-danger"></span>

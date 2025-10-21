@@ -48,7 +48,7 @@ namespace GED_APP.Controllers
         [HttpPost, ActionName("AddOrEdit")]
         [ValidateAntiForgeryToken]
         
-        public async Task<IActionResult> AddOrEdit([Bind("Id, Numero, Type, Beneficiaire, Signataire, DateSign, Status")] _Contrat c)
+        public async Task<IActionResult> AddOrEdit([Bind("Id, Numero, Type, Beneficiaire, Signataire, DateSign, Status, Code")] _Contrat c)
         {
             int existe = 0;
             int resp;
@@ -126,7 +126,7 @@ namespace GED_APP.Controllers
         }
         [HttpPost, ActionName("AddPdf")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddPdf([Bind("Id, Numero, Type, Beneficiaire, Signataire, DateSign, Status")] _Contrat c, IFormFile pdf)
+        public async Task<IActionResult> AddPdf([Bind("Id, Numero, Type, Beneficiaire, Signataire, DateSign, Status, Code")] _Contrat c, IFormFile pdf)
         {
 
             if (pdf != null)
@@ -160,7 +160,7 @@ namespace GED_APP.Controllers
             return View();
         }
         [HttpGet]
-        [Authorize(Roles = "ADMIN")]
+        [Authorize(Roles = "ADMIN, CSC")]
         public IActionResult showPdf(int id)
         {
             _Contrat c = new _Contrat();

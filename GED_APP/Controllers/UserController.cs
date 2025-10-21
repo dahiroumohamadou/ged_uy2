@@ -11,7 +11,8 @@ using System.Text;
 
 namespace GED_APP.Controllers
 {
-   
+  
+
     public class UserController : Controller
     {
         private readonly IUser _userRepo;

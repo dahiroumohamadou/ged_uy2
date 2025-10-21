@@ -3,6 +3,7 @@
     public class _Decret
     {
         public int Id { get; set; }
+        public string? Code { get; set; }
         public string? Numero { get; set; }
         public string? Objet { get; set; }
         public string? Signataire { get; set; }

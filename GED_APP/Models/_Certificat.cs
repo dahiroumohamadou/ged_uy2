@@ -3,6 +3,7 @@
     public class _Certificat
     {
         public int Id { get; set; }
+        public string? Code { get; set; }
         public string? Numero { get; set; }
         public string? Type { get; set; }
         public string? Destinataire { get; set; }

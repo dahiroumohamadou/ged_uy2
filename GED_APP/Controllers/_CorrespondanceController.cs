@@ -1,12 +1,14 @@
 ﻿using GED_APP.Models;
 using GED_APP.Repository.Implementations;
 using GED_APP.Repository.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 namespace GED_APP.Controllers
 {
+    [Authorize]
     public class _CorrespondanceController : Controller
     {
         private readonly _ICorrespondance _correspRepo;
@@ -44,7 +46,7 @@ namespace GED_APP.Controllers
         }
         [HttpPost, ActionName("AddOrEdit")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("Id, Reference, Objet, Emetteur, Recepteur, Signataire, DateSign, Status")] _Correspondance c)
+        public async Task<IActionResult> AddOrEdit([Bind("Id, Reference, Objet, Emetteur, Recepteur, Signataire, DateSign, Status, Code")] _Correspondance c)
         {
             int existe = 0;
             int resp;
@@ -89,6 +91,7 @@ namespace GED_APP.Controllers
 
         [HttpPost, ActionName("Delete")]
         //[ValidateAntiForgeryToken] 
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Delete(int id)
         {
             int resp;
@@ -120,7 +123,7 @@ namespace GED_APP.Controllers
         }
         [HttpPost, ActionName("AddPdf")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddPdf([Bind("Id, Reference, Objet, Emetteur, Recepteur, Signataire, DateSign, Status")] _Correspondance c, IFormFile pdf)
+        public async Task<IActionResult> AddPdf([Bind("Id, Reference, Objet, Emetteur, Recepteur, Signataire, DateSign, Status, Code")] _Correspondance c, IFormFile pdf)
         {
 
             if (pdf != null)
@@ -154,6 +157,7 @@ namespace GED_APP.Controllers
             return View();
         }
         [HttpGet]
+        [Authorize(Roles = "ADMIN, CSC")]
         public IActionResult showPdf(int id)
         {
             _Correspondance c = new _Correspondance();

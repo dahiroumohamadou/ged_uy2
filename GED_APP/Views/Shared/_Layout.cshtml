@@ -23,7 +23,7 @@
     <script src="https://cdn.syncfusion.com/ej2/24.1.41/dist/ej2.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/sweetalert2/6.3.8/sweetalert2.min.js"></script>
 </head>
-<body class="e-bigger bg-cyan-950">
+<body class="e-bigger mt-2">
    
     @if ((ViewData["isLogin"]==null) )
     {
@@ -34,7 +34,7 @@
         <partial name="_SideBar" />
     } *@
     <div class="dock-target">
-        <nav class="navbar sticky-top">
+        <nav class="navbar sticky-top mt-5">
              @if ((ViewData["isLogin"] == null))
             { 
                 <div class="container-fluid px-2 py-0">

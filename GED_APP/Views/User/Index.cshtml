@@ -43,10 +43,10 @@
             <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
             <e-grid-columns>
                 <e-grid-column field="rowIndex" headerText="N°" template="#rowIndexTemplate" textAlign="Center"></e-grid-column>
-                <e-grid-column field="Service" headerText="Service" template="#ServiceTemplate" textAlign="Center"></e-grid-column>
+                <e-grid-column field="Service" headerText="Service"  textAlign="Center"></e-grid-column>
                 <e-grid-column field="UserName" headerText="User" textAlign="Center"></e-grid-column>
                 <e-grid-column field="UserEmail" headerText="Email" textAlign="Center"></e-grid-column>
-                <e-grid-column field="Role" headerText="Role" textAlign="Center"></e-grid-column>
+                <e-grid-column field="Role" headerText="Role" template="#RoleTemplate" textAlign="Center"></e-grid-column>
                 <e-grid-column headerText="Actions" template="#actionColumTemplate" textAlign="Center"> </e-grid-column>
             </e-grid-columns>
         </ejs-grid>
@@ -72,15 +72,13 @@
          </form>
     </div>
 </script>
-<script id="ServiceTemplate" type="text/x-template">
-    ${if(Service=="DCAA")}
-        <span class="badge bg-primary">${Service}</span>
-    ${else if(Service=="SDSAA")}
-        <span class="badge bg-success">${Service}</span>
-    ${else if(Service=="SDDA")}
-        <span class="badge bg-info">${Service}</span>
+<script id="RoleTemplate" type="text/x-template">
+    ${if(Role=="ADMIN")}
+        <span class="badge bg-primary">${Role}</span>
+    ${else if(Role=="CSC")}
+        <span class="badge bg-success">${Role}</span>
     ${else}
-         <span class="badge bg-danger">${Service}</span>
+         <span class="badge bg-danger">${Role}</span>
     ${/if}
 </script>
 

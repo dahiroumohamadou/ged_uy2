@@ -21,7 +21,7 @@ namespace GED_APP.Repository.Implementations
         {
             int res = -1;
             var cor = _context._Correspondances
-                .Where(cc => cc.Reference == c.Reference && cc.DateSign == c.DateSign)
+                .Where(cc => cc.Reference == c.Reference && cc.Code==c.Code && cc.DateSign == c.DateSign)
                 .FirstOrDefault() ?? null;
             if (cor == null) {
                 if (c != null)
@@ -59,7 +59,7 @@ namespace GED_APP.Repository.Implementations
 
             int res = -1;
             var c = _context._Correspondances
-                 .Where(cc => cc.Reference == cr.Reference && cc.DateSign == cr.DateSign)
+                 .Where(cc => cc.Reference == cr.Reference && cc.Code==cr.Code && cc.DateSign == cr.DateSign)
                 .FirstOrDefault() ?? null;
             if (c != null)
             {
@@ -100,6 +100,7 @@ namespace GED_APP.Repository.Implementations
                .FirstOrDefault() ?? null;
             if (c != null)
             {
+                c.Code= cr.Code;
                 c.Reference = cr.Reference;
                 c.DateSign = cr.DateSign;
                 c.Status = cr.Status;

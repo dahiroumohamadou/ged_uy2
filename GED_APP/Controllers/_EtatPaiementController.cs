@@ -1,12 +1,14 @@
 ﻿using GED_APP.Models;
 using GED_APP.Repository.Implementations;
 using GED_APP.Repository.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 namespace GED_APP.Controllers
 {
+    [Authorize]
     public class _EtatPaiementController : Controller
     {
         private readonly _IEtatPaiement _etatRepo;
@@ -44,7 +46,7 @@ namespace GED_APP.Controllers
         }
         [HttpPost, ActionName("AddOrEdit")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("Id, Numero, Objet, Signataire, DateSign, Status, Updated")] _EtatPaiement a)
+        public async Task<IActionResult> AddOrEdit([Bind("Id, Numero, Objet, Signataire, DateSign, Status, Updated, Code")] _EtatPaiement a)
         {
             int existe = 0;
             int resp;
@@ -89,6 +91,7 @@ namespace GED_APP.Controllers
 
         [HttpPost, ActionName("Delete")]
         //[ValidateAntiForgeryToken] 
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Delete(int id)
         {
             int resp;
@@ -120,7 +123,7 @@ namespace GED_APP.Controllers
         }
         [HttpPost, ActionName("AddPdf")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddPdf([Bind("Id, Numero, Objet, Signataire, DateSign, Status, Updated")] _EtatPaiement a, IFormFile pdf)
+        public async Task<IActionResult> AddPdf([Bind("Id, Numero, Objet, Signataire, DateSign, Status, Updated, Code")] _EtatPaiement a, IFormFile pdf)
         {
 
             if (pdf != null)
@@ -154,6 +157,7 @@ namespace GED_APP.Controllers
             return View();
         }
         [HttpGet]
+        [Authorize(Roles = "ADMIN, CSC")]
         public IActionResult showPdf(int id)
         {
             _EtatPaiement e = new _EtatPaiement();

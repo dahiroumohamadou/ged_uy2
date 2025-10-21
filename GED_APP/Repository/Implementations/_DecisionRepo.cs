@@ -18,7 +18,7 @@ namespace GED_APP.Repository.Implementations
         {
             int res = -1;
             var dd = _context._Decisions
-                .Where(de => de.Numero == d.Numero && de.Type == d.Type && de.DateSign == d.DateSign)
+                .Where(de => de.Numero == d.Numero && de.Code==d.Code && de.Type == d.Type && de.DateSign == d.DateSign)
                 .FirstOrDefault() ?? null;
             if (dd == null)
             {
@@ -57,7 +57,7 @@ namespace GED_APP.Repository.Implementations
         {
             int res = -1;
             var d = _context._Decisions
-                .Where(de => de.Numero == dd.Numero && de.Type == dd.Type && de.DateSign == dd.DateSign)
+                .Where(de => de.Numero == dd.Numero && de.Code==dd.Code && de.Type == dd.Type && de.DateSign == dd.DateSign)
                 .FirstOrDefault() ?? null;
             if (d != null)
             {
@@ -99,6 +99,7 @@ namespace GED_APP.Repository.Implementations
             if (d != null)
             {
                 d.Numero = de.Numero;
+                d.Code = de.Code;
                 d.DateSign = de.DateSign;
                 d.Status = de.Status;
                 d.Type = de.Type;
