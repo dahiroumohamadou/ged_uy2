@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using NuGet.Common;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -54,6 +55,58 @@ namespace GED_APP.Controllers
                
             }
             return View(u);
+
+        }
+        [HttpGet]
+        [Authorize(Roles = "ADMIN")]
+        public IActionResult EditPass(int id = 0)
+        {
+            User u = new User();
+            OnloadServices();
+            if (id == 0)
+            {
+                return View(new User());
+            }
+            else
+            {
+                u = _userRepo.GetById(id);
+
+            }
+            return View(u);
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditPass([Bind("Id, UserName, UserEmail, Service, Role, Password, saltPassword, Token,  KeepLoginIn")] User usr)
+        {
+            int res;
+            if (ModelState.IsValid)
+            {
+                OnloadServices();
+                string newpass=usr.Token;
+                
+                // hashing password
+                var salBytes = new byte[64];
+                var provider = new RNGCryptoServiceProvider();
+                provider.GetNonZeroBytes(salBytes);
+                var salt = Convert.ToBase64String(salBytes);
+                var rfc2898DeriveBytes = new Rfc2898DeriveBytes(newpass, salBytes, 1000);
+                var hash = Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256));
+                //fin hashing pass
+
+                usr.Password = hash;
+                usr.SaltPassword = salt;
+
+                res = _userRepo.Update(usr);
+                usr.Token = null;
+                res = _userRepo.Update(usr);
+                if (res > 0)
+                    {
+                        TempData["AlertMessage"] = "User password updated successfully.....";
+                        return RedirectToAction("Index");
+                    }
+            }
+            return RedirectToAction("Index");
 
         }
         [HttpPost]
@@ -195,7 +248,7 @@ namespace GED_APP.Controllers
             if (ModelState.IsValid)
             {
                 services.Insert(0, "Choisir le service");
-                services.Insert(1, "CABNIET");
+                services.Insert(1, "RECTORAT");
                 services.Insert(2, "COURRIER");
                 ViewBag.Services = services;
             }

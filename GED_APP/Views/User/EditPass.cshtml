@@ -1,0 +1,47 @@
+﻿@model GED_APP.Models.User
+
+@{
+    // ViewData["Title"] = "Create";
+    ViewData["PageTitle"] = Model.Id == 0 ? "Create new user" : "Edit user password";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget p-4">
+            <form asp-action="EditPass">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="Id" value="@Model.Id" />
+                <div class="mb-2">
+                    <div class='e-btn-group custom-rbt-group'>
+                        <input type="radio" id="radioop" name="Role" value="OP" checked="@(Model.Role == "OP")" />
+                        <label class="e-btn" for="radioop">OPERATEUR</label>
+                        <input type="radio" id="radiocs" name="Role" value="CSP" checked="@(Model.Role == "CSC")" />
+                        <label class="e-btn" for="radiocs">CHEF SERV. COURRIER</label>
+                        <input type="radio" id="radioad" name="Role" value="ADMIN" checked="@(Model.Role == "ADMIN")" />
+                        <label class="e-btn" for="radioad">ADMIN</label>
+                    </div>
+                </div>
+                
+                <div class="mb-2">
+                    <ejs-textbox id="UserName" placeholder="Username" floatLabelType="Always" ejs-for="UserName"></ejs-textbox>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="mb-2">
+                    <ejs-textbox type="Serv" id="Service" placeholder="Service" floatLabelType="Always" ejs-for="Service"></ejs-textbox>
+                    <span asp-validation-for="Service" class="text-danger"></span>
+                </div>
+                <div class="mb-2">
+                    <ejs-textbox id="email" placeholder="Email" floatLabelType="Always" ejs-for="UserEmail"></ejs-textbox>
+                    <span asp-validation-for="UserEmail" class="text-danger"></span>
+                </div>
+                <div class="mb-2">
+                    <ejs-textbox type="password" id="Password" placeholder="New Password" floatLabelType="Always" ejs-for="Token"></ejs-textbox>
+                    <span asp-validation-for="Token" class="text-danger"></span>
+                </div>
+                <ejs-button id="submit" cssClass="e-success" type="submit" content="reinitialiser"></ejs-button>
+            </form>
+        </div>
+    </div>
+
+</div>

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GED_APP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+43b157ce0ba947a0cf62ef08e42eda7d57c7b7a8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd513d1ef338094bccb24fe4bdc98425906b01d0")]
 [assembly: System.Reflection.AssemblyProductAttribute("GED_APP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GED_APP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
